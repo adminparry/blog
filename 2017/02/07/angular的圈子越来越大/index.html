@@ -1,0 +1,147 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    
+    <meta name="author" content="parry">
+    
+    <meta name="description" content="angularjs著名的背景谷歌诞生于2009年，从12年开始mv*的框架渐渐的走进前端的流行区域，走进生产，随着线上逐渐增多，社区以及博客也变得越加丰富，这是每个优秀框架所必经的，而在现在使用的用户量也开始增长了
+快速开始touch index.html1234567891011121314151">
+    
+    
+
+    
+    <link rel="alternative" href="YOUR_RSS_ADDRESS" title="parry" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/blog/favicon.png">
+    
+    
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>angularjs的圈子越来越大 | parry</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="/blog/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/blog/css/style.css">
+
+    <!-- Javascript -->
+    <script src="/blog/js/jquery-2.1.0.min.js"></script>
+    
+    <script src="/blog/bootstrap/js/bootstrap.min.js"></script>
+
+    <script src="/blog/js/common.js"></script>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-inverse" role="banner">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a target="_blank" class="navbar-brand" href="http://code-helloworld.com" title="parry">parry</a>
+            </div>
+
+            <div role="navigation" class="collapse navbar-collapse bs-navbar-collapse">
+                
+
+                <ul class="nav navbar-nav">
+                    
+                    <li id="nav-index"><a href="/blog">首页</a></li>
+                    
+                    <li id="nav-archives"><a href="/blog/archives">归档</a></li>
+                    
+                    
+                    <li><a href="https://github.com/adminparry" target="_blank">GitHub</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    <script>
+    var backRoot = "/blog/images/background/";
+    var backArray = [ "1.jpg", "2.jpg", "3.jpg",  ];
+        
+    $(function() {
+        // page-id...
+        var pageId = "2017/02/07/angular的圈子越来越大/";
+        pageId = pageId.substr(0, pageId.indexOf("/"));
+        if(pageId === "") pageId = "index";
+        
+        $("#nav-" + pageId).addClass("active");
+    });
+    </script>
+
+    <article class="post container">
+    <div class="well post-body first-post last-post">
+        <h1>angularjs的圈子越来越大</h1>
+        
+        <div class="time-info">
+发表于:<time datetime="2017-02-07T10:29:34.000Z" itemprop="datePublished">2017-02-07</time>，更新于:<time datetime="2017-01-10T10:01:28.000Z" itemprop="dateModified">2017-01-10</time>，By <a href="http://code-helloworld.com" title="parry">parry</a>
+        </div>
+        
+        <div class="post-body-inner">
+            <div id="toc" class="toc-article well">
+                <strong class="toc-title">大纲</strong>
+                <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#快速开始"><span class="toc-number">1.</span> <span class="toc-text">快速开始</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#touch-index-html"><span class="toc-number">1.1.</span> <span class="toc-text">touch index.html</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#angular2"><span class="toc-number">1.2.</span> <span class="toc-text">angular2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ionic"><span class="toc-number">1.3.</span> <span class="toc-text">ionic</span></a></li></ol></li></ol>
+            </div>
+            <div class="description">
+
+            <p>angularjs著名的背景谷歌诞生于2009年，从12年开始mv*的框架渐渐的走进前端的流行区域，走进生产，随着线上逐渐增多，社区以及博客也变得越加丰富，这是每个优秀框架所必经的，而在现在使用的用户量也开始增长了</p>
+<h2 id="快速开始"><a href="#快速开始" class="headerlink" title="快速开始"></a>快速开始</h2><h3 id="touch-index-html"><a href="#touch-index-html" class="headerlink" title="touch index.html"></a>touch index.html</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html&gt;</div><div class="line">&lt;head&gt;</div><div class="line">&lt;meta charset=<span class="string">"utf-8"</span>&gt;</div><div class="line">&lt;script src=<span class="string">"http://cdn.static.runoob.com/libs/angular.js/1.4.6/angular.min.js"</span>&gt;&lt;/script&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line"></div><div class="line">&lt;div ng-app=<span class="string">"myApp"</span>  ng-controller=<span class="string">"myCtrl"</span>  ng-init=<span class="string">"firstName='John'"</span>&gt;</div><div class="line"> 	&lt;p&gt;名字 : &lt;input <span class="built_in">type</span>=<span class="string">"text"</span> ng-model=<span class="string">"name"</span>&gt;&lt;/p&gt;</div><div class="line"> 	&lt;h1&gt;Hello &#123;&#123;name&#125;&#125;&lt;/h1&gt;</div><div class="line"> 	&lt;p&gt;我的第一个表达式: &#123;&#123; 5 + 5 &#125;&#125;&lt;/p&gt;</div><div class="line"> 	 &lt;p&gt;在输入框中尝试输入：&lt;/p&gt;</div><div class="line">     &lt;p&gt;姓名：&lt;input <span class="built_in">type</span>=<span class="string">"text"</span> ng-model=<span class="string">"firstName"</span>&gt;&lt;/p&gt;</div><div class="line">     &lt;p&gt;你输入的为： &#123;&#123; firstName &#125;&#125;&lt;/p&gt;</div><div class="line"> 	 名字: &lt;input ng-model=<span class="string">"name"</span>&gt;</div><div class="line"> 	 ...</div><div class="line">&lt;/div&gt;</div><div class="line">&lt;script&gt;</div><div class="line">var app = angular.module(<span class="string">'myApp'</span>, []);</div><div class="line">app.controller(<span class="string">'myCtrl'</span>, <span class="keyword">function</span>(<span class="variable">$scope</span>) &#123;</div><div class="line">    <span class="variable">$scope</span>.name = <span class="string">"John Doe"</span>;</div><div class="line">&#125;);</div><div class="line">&lt;/script&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+<p>AngularJS 指令是扩展的 HTML 属性，带有前缀 ng-。<br>ng-app 指令初始化一个 AngularJS 应用程序。<br>ng-init 指令初始化应用程序数据。<br>ng-model 指令把元素值（比如输入域的值）绑定到应用程序<br>…<a href="http://www.runoob.com/angularjs/angularjs-reference.html" target="_blank" rel="external">更多</a><br>最基本的使用参考菜鸟教程</p>
+<h3 id="angular2"><a href="#angular2" class="headerlink" title="angular2"></a>angular2</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">import &#123; Component &#125; from <span class="string">'@angular/core'</span>;</div><div class="line"></div><div class="line">@Component(&#123;</div><div class="line">  selector: <span class="string">'my-app'</span>,</div><div class="line">  template: `&lt;h1&gt;Hello &#123;&#123;name&#125;&#125;&lt;/h1&gt;`</div><div class="line">&#125;)</div><div class="line"><span class="built_in">export</span> class AppComponent &#123; name = <span class="string">'Angular'</span>; &#125;</div></pre></td></tr></table></figure>
+<p>angular2采用语法糖typescript其形变而神不变</p>
+<h3 id="ionic"><a href="#ionic" class="headerlink" title="ionic"></a>ionic</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&lt;body ng-app=<span class="string">"starter"</span> ng-controller=<span class="string">"actionsheetCtl"</span> &gt;</div><div class="line">	&lt;ion-pane&gt;</div><div class="line">	    &lt;ion-content &gt;</div><div class="line">	        &lt;h2 ng-click=<span class="string">"action()"</span>&gt;<span class="variable">$ionicBackdrop</span>&lt;/h2&gt;</div><div class="line">	    &lt;/ion-content&gt;</div><div class="line">	&lt;/ion-pane&gt;</div><div class="line">&lt;/body&gt;</div></pre></td></tr></table></figure>
+<p>同样是angular的移动平台方案<br><a href="http://www.runoob.com/ionic/ionic-tutorial.html" target="_blank" rel="external">更多</a></p>
+
+            </div>
+
+			
+            <section class="comment">
+<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="/blog/2017/02/07/angular的圈子越来越大/" data-title="angularjs的圈子越来越大" data-url="http://code-helloworld.com/blog/2017/02/07/angular的圈子越来越大/"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"YOUR_DUOSHUO_SHORT_NAME"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0]
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+</section>
+        </div>
+    </div>
+</article>
+
+    <footer id="footer">
+    	<br />
+        <small>this blog power by <a href="https://hexo.io/" target="_blank">Hexo</a><br />
+        <small>&copy; 2014 parry</small>
+    </footer>
+
+    
+
+
+</body>
+</html>
+

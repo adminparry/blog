@@ -1,0 +1,146 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    
+    <meta name="author" content="parry">
+    
+    <meta name="description" content="对于前端开发而言，尤其是像一些理财或者金融方面的网站避免不了数字的出现，而对于金钱的数字而言一般习惯上比较喜欢看千分位格式化这种形式例如：6,656.23 ，很明显的让我们感觉直观所以对于这样的格式化我们就交给正则这个老大哥给我们解决
+快速开始创建一个html文件1$ touch index.htm">
+    
+    
+
+    
+    <link rel="alternative" href="YOUR_RSS_ADDRESS" title="parry" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/blog/favicon.png">
+    
+    
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>数字三位格式化 | parry</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="/blog/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/blog/css/style.css">
+
+    <!-- Javascript -->
+    <script src="/blog/js/jquery-2.1.0.min.js"></script>
+    
+    <script src="/blog/bootstrap/js/bootstrap.min.js"></script>
+
+    <script src="/blog/js/common.js"></script>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-inverse" role="banner">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a target="_blank" class="navbar-brand" href="http://code-helloworld.com" title="parry">parry</a>
+            </div>
+
+            <div role="navigation" class="collapse navbar-collapse bs-navbar-collapse">
+                
+
+                <ul class="nav navbar-nav">
+                    
+                    <li id="nav-index"><a href="/blog">首页</a></li>
+                    
+                    <li id="nav-archives"><a href="/blog/archives">归档</a></li>
+                    
+                    
+                    <li><a href="https://github.com/adminparry" target="_blank">GitHub</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    <script>
+    var backRoot = "/blog/images/background/";
+    var backArray = [ "1.jpg", "2.jpg", "3.jpg",  ];
+        
+    $(function() {
+        // page-id...
+        var pageId = "2017/02/07/js格式化数字/";
+        pageId = pageId.substr(0, pageId.indexOf("/"));
+        if(pageId === "") pageId = "index";
+        
+        $("#nav-" + pageId).addClass("active");
+    });
+    </script>
+
+    <article class="post container">
+    <div class="well post-body first-post last-post">
+        <h1>数字三位格式化</h1>
+        
+        <div class="time-info">
+发表于:<time datetime="2017-02-07T10:29:34.000Z" itemprop="datePublished">2017-02-07</time>，更新于:<time datetime="2016-11-17T12:36:32.000Z" itemprop="dateModified">2016-11-17</time>，By <a href="http://code-helloworld.com" title="parry">parry</a>
+        </div>
+        
+        <div class="post-body-inner">
+            <div id="toc" class="toc-article well">
+                <strong class="toc-title">大纲</strong>
+                <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#快速开始"><span class="toc-number">1.</span> <span class="toc-text">快速开始</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#创建一个html文件"><span class="toc-number">1.1.</span> <span class="toc-text">创建一个html文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#直接摆出代码"><span class="toc-number">1.2.</span> <span class="toc-text">直接摆出代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用正则进行格式化"><span class="toc-number">1.3.</span> <span class="toc-text">使用正则进行格式化</span></a></li></ol></li></ol>
+            </div>
+            <div class="description">
+
+            <p>对于前端开发而言，尤其是像一些理财或者金融方面的网站避免不了数字的出现，而对于金钱的数字而言一般习惯上比较喜欢看千分位格式化这种形式例如：6,656.23 ，很明显的让我们感觉直观所以对于这样的格式化我们就交给正则这个老大哥给我们解决</p>
+<h2 id="快速开始"><a href="#快速开始" class="headerlink" title="快速开始"></a>快速开始</h2><h3 id="创建一个html文件"><a href="#创建一个html文件" class="headerlink" title="创建一个html文件"></a>创建一个html文件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ touch index.html</div></pre></td></tr></table></figure>
+<h3 id="直接摆出代码"><a href="#直接摆出代码" class="headerlink" title="直接摆出代码"></a>直接摆出代码</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html lang=<span class="string">"en"</span>&gt;</div><div class="line">&lt;head&gt;</div><div class="line">	&lt;meta charset=<span class="string">"UTF-8"</span>&gt;</div><div class="line">	&lt;title&gt;Document&lt;/title&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">	&lt;input id=<span class="string">"in"</span> <span class="built_in">type</span>=<span class="string">"text"</span>&gt;&lt;button id=<span class="string">"btn"</span>&gt;转化&lt;/button&gt;&lt;input id=<span class="string">"result"</span> <span class="built_in">type</span>=<span class="string">"text"</span>&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+<p>在这里我们只做一个演示</p>
+<h3 id="使用正则进行格式化"><a href="#使用正则进行格式化" class="headerlink" title="使用正则进行格式化"></a>使用正则进行格式化</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">window.btn.onclick = <span class="function"><span class="title">function</span></span>()&#123;</div><div class="line">	window.result.value = window.in.value.replace(/(\d&#123;3&#125;)(?=(?:[^$]))/g,<span class="string">"<span class="variable">$1</span>,"</span>)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>解释一下这段正则的意思<br>三位连续的数字如果后面有那后面一定不能是结尾<br>后面的$1指的是第一个分组说白了就是第一个括号<br>这里也避免了123,这种形式的出现</p>
+
+            </div>
+
+			
+            <section class="comment">
+<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="/blog/2017/02/07/js格式化数字/" data-title="数字三位格式化" data-url="http://code-helloworld.com/blog/2017/02/07/js格式化数字/"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"YOUR_DUOSHUO_SHORT_NAME"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0]
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+</section>
+        </div>
+    </div>
+</article>
+
+    <footer id="footer">
+    	<br />
+        <small>this blog power by <a href="https://hexo.io/" target="_blank">Hexo</a><br />
+        <small>&copy; 2014 parry</small>
+    </footer>
+
+    
+
+
+</body>
+</html>
+
