@@ -1,0 +1,157 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    
+    <meta name="author" content="parry">
+    
+    <meta name="description" content="在一些教程类的网站上并没有详细说明==和===的区别，即使有一些博客进行记录的其说明也大不相同，而由于运用的场景不同和js动态类型这个问题变得更加复杂让人难以琢磨
+快速开始首先回顾数据类型原始值:空null 未定义undefined 字符串String 数字Number 布尔Boolean引用值:数">
+    
+    
+
+    
+    <link rel="alternative" href="YOUR_RSS_ADDRESS" title="parry" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/blog/favicon.png">
+    
+    
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>js中的==和=== | parry</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="/blog/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/blog/css/style.css">
+
+    <!-- Javascript -->
+    <script src="/blog/js/jquery-2.1.0.min.js"></script>
+    
+    <script src="/blog/bootstrap/js/bootstrap.min.js"></script>
+
+    <script src="/blog/js/common.js"></script>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-inverse" role="banner">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a target="_blank" class="navbar-brand" href="http://code-helloworld.com" title="parry">parry</a>
+
+            
+            </div>
+
+            <div role="navigation" class="collapse navbar-collapse bs-navbar-collapse">
+                
+                <a id="search" href="javascript:" class="navbar-text pull-right">搜索</a>
+                <ul class="nav navbar-nav">
+                    
+                    <li id="nav-index"><a href="/blog">首页</a></li>
+                    
+                    <li id="nav-archives"><a href="/blog/archives">归档</a></li>
+                    
+                    
+                    <li><a href="https://github.com/adminparry" target="_blank">GitHub</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div style="width:100%;height:100%;background:white;display:none;">
+ 
+    </div>
+    <script>
+    var backRoot = "/blog/images/background/";
+    var backArray = [ "1.jpg", "2.jpg", "3.jpg",  ];
+        
+    $(function() {
+        // page-id...
+        var pageId = "2017/02/07/js中的==和===/";
+        pageId = pageId.substr(0, pageId.indexOf("/"));
+        if(pageId === "") pageId = "index";
+        
+        $("#nav-" + pageId).addClass("active");
+        $('#search').click(function(){
+
+        })
+    });
+    </script>
+
+    <article class="post container">
+    <div class="well post-body first-post last-post">
+        <h1>js中的==和===</h1>
+        
+        <div class="time-info">
+发表于:<time datetime="2017-02-07T10:29:34.000Z" itemprop="datePublished">2017-02-07</time>，更新于:<time datetime="2017-02-19T09:37:03.000Z" itemprop="dateModified">2017-02-19</time>，By <a href="http://code-helloworld.com" title="parry">parry</a>
+        </div>
+        
+        <div class="post-body-inner">
+            <div id="toc" class="toc-article well">
+                <strong class="toc-title">大纲</strong>
+                <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#快速开始"><span class="toc-number">1.</span> <span class="toc-text">快速开始</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#首先回顾数据类型"><span class="toc-number">1.1.</span> <span class="toc-text">首先回顾数据类型</span></a></li></ol></li></ol>
+            </div>
+            <div class="description">
+
+            <p>在一些教程类的网站上并没有详细说明==和===的区别，即使有一些博客进行记录的其说明也大不相同，而由于运用的场景不同和js动态类型这个问题变得更加复杂让人难以琢磨</p>
+<h2 id="快速开始"><a href="#快速开始" class="headerlink" title="快速开始"></a>快速开始</h2><h3 id="首先回顾数据类型"><a href="#首先回顾数据类型" class="headerlink" title="首先回顾数据类型"></a>首先回顾数据类型</h3><p>原始值:<br>空null 未定义undefined 字符串String 数字Number 布尔Boolean<br>引用值:<br>数组Array 对象Object 函数Function</p>
+<p>其实这个问题很简单<br>==是转换类型后进行比较(准确的说是比较原始值)</p>
+<p>===是比较的引用地址</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">//<span class="literal">true</span> 转化类型后 <span class="literal">false</span> == <span class="literal">false</span></div><div class="line">undefined == null</div><div class="line"></div><div class="line">//<span class="literal">false</span> 引用地址不一致</div><div class="line">undefined === null</div><div class="line"></div><div class="line">//<span class="literal">false</span></div><div class="line">//因为这两个都是一个新的引用</div><div class="line">[] === []</div><div class="line"></div><div class="line">//<span class="literal">true</span></div><div class="line">//因为这两个都是同一个引用</div><div class="line">var arr = [];</div><div class="line">arr === arr;</div><div class="line"> </div><div class="line">//<span class="literal">true</span></div><div class="line">&lt;!-- 转化类型  [].valueOf().toString() --&gt;</div><div class="line">[] == <span class="literal">false</span></div><div class="line">//容易混淆 </div><div class="line">&lt;!-- Boolean([]) --&gt;</div><div class="line"><span class="keyword">if</span>([])&#123;</div><div class="line">	alert(<span class="string">"执行"</span>)</div><div class="line">&#125;</div><div class="line">//<span class="literal">false</span></div><div class="line">[] === ![]</div></pre></td></tr></table></figure>
+<p>ECMAScript 原始值和引用值<br>在 ECMAScript 中，变量可以存在两种类型的值，即原始值和引用值。<br>原始值<br>存储在栈（stack）中的简单数据段，也就是说，它们的值直接存储在变量访问的位置。<br>引用值<br>存储在堆（heap）中的对象，也就是说，存储在变量处的值是一个指针（point），指向存储对象的内存处。</p>
+<p>存储在堆（heap）中的对象，也就是说，存储在变量处的值是一个指针（point），指向存储对象的内存处。<br>为变量赋值时，ECMAScript 的解释程序必须判断该值是原始类型，还是引用类型。要实现这一点，解释程序则需尝试判断该值是否为 ECMAScript 的原始类型之一，即 Undefined、Null、Boolean、Number 和 String 型。由于这些原始类型占据的空间是固定的，所以可将他们存储在较小的内存区域 - 栈中。这样存储便于迅速查寻变量的值。</p>
+<p>在许多语言中，字符串都被看作引用类型，而非原始类型，因为字符串的长度是可变的。ECMAScript 打破了这一传统。<br>如果一个值是引用类型的，那么它的存储空间将从堆中分配。由于引用值的大小会改变，所以不能把它放在栈中，否则会降低变量查寻的速度。相反，放在变量的栈空间中的值是该对象存储在堆中的地址。地址的大小是固定的，所以把它存储在栈中对变量性能无任何负面影响。如下图所示：</p>
+<p><img src="/blog/images/PrimitiveValue/PrimitiveValue.gif" alt="PrimitiveValue"><br>原始类型<br>如前所述，ECMAScript 有 5 种原始类型（primitive type），即 Undefined、Null、Boolean、Number 和 String。ECMA-262 把术语类型（type）定义为值的一个集合，每种原始类型定义了它包含的值的范围及其字面量表示形式。<br>ECMAScript 提供了 typeof 运算符来判断一个值是否在某种类型的范围内。可以用这种运算符判断一个值是否表示一种原始类型：如果它是原始类型，还可以判断它表示哪种原始类型。</p>
+<p><a href="http://www.w3school.com.cn/js/pro_js_value.asp" target="_blank" rel="external">参考地址w3cschool</a></p>
+
+            </div>
+
+			
+            <section class="comment">
+<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="/blog/2017/02/07/js中的==和===/" data-title="js中的==和===" data-url="http://code-helloworld.com/blog/2017/02/07/js中的==和===/"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"YOUR_DUOSHUO_SHORT_NAME"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0]
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+</section>
+        </div>
+    </div>
+</article>
+
+    <footer id="footer">
+    	<br />
+        <small>this blog power by <a href="https://hexo.io/" target="_blank">Hexo</a><br />
+        <small>&copy; 2014 parry</small>
+    </footer>
+
+    
+
+
+</body>
+</html>
+

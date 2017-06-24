@@ -7,7 +7,17 @@
     <meta name="author" content="parry">
     
     <meta name="description" content="对于大多数编程语言来说几乎都支持正则，而且大体上都是同样的用法，但是还是有一点小差异的，正则在计算机编程领域有着重要的地位，虽然他只是用来操作字符串，或许就已经足够了
-一些常用的正则校验123456789101112&amp;lt;!-- 电话座机 --&amp;gt;&amp;lt;!-- 身份证号 --&amp;gt;/^\d">
+
+
+
+字符
+描述
+
+
+
+
+\
+将下一个字符标记为一个特殊字符、或一个原义字符、或一个 向后引用、或一个八进制转义符。例如，’n’ 匹">
     
     
 
@@ -53,11 +63,13 @@
                     <span class="icon-bar"></span>
                 </button>
                 <a target="_blank" class="navbar-brand" href="http://code-helloworld.com" title="parry">parry</a>
+
+            
             </div>
 
             <div role="navigation" class="collapse navbar-collapse bs-navbar-collapse">
                 
-
+                <a id="search" href="javascript:" class="navbar-text pull-right">搜索</a>
                 <ul class="nav navbar-nav">
                     
                     <li id="nav-index"><a href="/blog">首页</a></li>
@@ -70,7 +82,9 @@
             </div>
         </div>
     </nav>
-    
+    <div style="width:100%;height:100%;background:white;display:none;">
+ 
+    </div>
     <script>
     var backRoot = "/blog/images/background/";
     var backArray = [ "1.jpg", "2.jpg", "3.jpg",  ];
@@ -82,6 +96,9 @@
         if(pageId === "") pageId = "index";
         
         $("#nav-" + pageId).addClass("active");
+        $('#search').click(function(){
+
+        })
     });
     </script>
 
@@ -90,7 +107,7 @@
         <h1>使用正则对你有好处</h1>
         
         <div class="time-info">
-发表于:<time datetime="2017-02-07T10:29:34.000Z" itemprop="datePublished">2017-02-07</time>，更新于:<time datetime="2017-02-11T14:23:00.000Z" itemprop="dateModified">2017-02-11</time>，By <a href="http://code-helloworld.com" title="parry">parry</a>
+发表于:<time datetime="2017-02-07T10:29:34.000Z" itemprop="datePublished">2017-02-07</time>，更新于:<time datetime="2017-02-27T01:05:50.000Z" itemprop="dateModified">2017-02-27</time>，By <a href="http://code-helloworld.com" title="parry">parry</a>
         </div>
         
         <div class="post-body-inner">
@@ -101,6 +118,28 @@
             <div class="description">
 
             <p>对于大多数编程语言来说几乎都支持正则，而且大体上都是同样的用法，但是还是有一点小差异的，正则在计算机编程领域有着重要的地位，虽然他只是用来操作字符串，或许就已经足够了</p>
+<table>
+<thead>
+<tr>
+<th>字符</th>
+<th style="text-align:center">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>\</td>
+<td style="text-align:center">将下一个字符标记为一个特殊字符、或一个原义字符、或一个 向后引用、或一个八进制转义符。例如，’n’ 匹配字符 “n”。’\n’ 匹配一个换行符。序列 ‘\‘ 匹配 “\” 而 “(“ 则匹配 “(“</td>
+</tr>
+<tr>
+<td>col 2 is</td>
+<td style="text-align:center">centered</td>
+</tr>
+<tr>
+<td>zebra stripes</td>
+<td style="text-align:center">are neat</td>
+</tr>
+</tbody>
+</table>
 <h3 id="一些常用的正则校验"><a href="#一些常用的正则校验" class="headerlink" title="一些常用的正则校验"></a>一些常用的正则校验</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">&lt;!-- 电话座机 --&gt;</div><div class="line">&lt;!-- 身份证号 --&gt;</div><div class="line">/^\d&#123;15&#125;|\d&#123;18&#125;$/</div><div class="line">&lt;!-- 域名 --&gt;</div><div class="line">/[a-zA-Z0-9][<span class="_">-a</span>-zA-Z0-9]&#123;0,62&#125;(/.[a-zA-Z0-9][<span class="_">-a</span>-zA-Z0-9]&#123;0,62&#125;)+/.?/</div><div class="line">&lt;!-- 邮箱 --&gt;</div><div class="line">/^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/</div><div class="line">&lt;!-- 汉字 --&gt;</div><div class="line">/^[\u4e00-\u9fa5]&#123;0,&#125;$/</div><div class="line">&lt;!-- 数字 --&gt;</div><div class="line">/^\d+$/</div><div class="line">&lt;!--  --&gt;</div></pre></td></tr></table></figure>
 <p>^$代表开头结尾<br>[]中的^代表除了<br>+代表至少包含一个<br>|同级或<br>\d 代表数字<br>\D 代表非数字<br>. 代表非换行和行结束符</p>
 <h3 id="数字三位格式化"><a href="#数字三位格式化" class="headerlink" title="数字三位格式化"></a>数字三位格式化</h3><p>对于前端开发而言，尤其是像一些理财或者金融方面的网站避免不了数字的出现，而对于金钱的数字而言一般习惯上比较喜欢看千分位格式化这种形式例如：6,656.23 ，很明显的让我们感觉直观所以对于这样的格式化我们就交给正则这个老大哥给我们解决</p>

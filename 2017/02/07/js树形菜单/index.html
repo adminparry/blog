@@ -54,11 +54,13 @@ box作为树形菜单的容器123456789101112&amp;lt;!DOCTYPE html&amp;gt;&amp;l
                     <span class="icon-bar"></span>
                 </button>
                 <a target="_blank" class="navbar-brand" href="http://code-helloworld.com" title="parry">parry</a>
+
+            
             </div>
 
             <div role="navigation" class="collapse navbar-collapse bs-navbar-collapse">
                 
-
+                <a id="search" href="javascript:" class="navbar-text pull-right">搜索</a>
                 <ul class="nav navbar-nav">
                     
                     <li id="nav-index"><a href="/blog">首页</a></li>
@@ -71,7 +73,9 @@ box作为树形菜单的容器123456789101112&amp;lt;!DOCTYPE html&amp;gt;&amp;l
             </div>
         </div>
     </nav>
-    
+    <div style="width:100%;height:100%;background:white;display:none;">
+ 
+    </div>
     <script>
     var backRoot = "/blog/images/background/";
     var backArray = [ "1.jpg", "2.jpg", "3.jpg",  ];
@@ -83,6 +87,9 @@ box作为树形菜单的容器123456789101112&amp;lt;!DOCTYPE html&amp;gt;&amp;l
         if(pageId === "") pageId = "index";
         
         $("#nav-" + pageId).addClass("active");
+        $('#search').click(function(){
+
+        })
     });
     </script>
 
