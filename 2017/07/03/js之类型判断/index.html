@@ -1,0 +1,152 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    
+    <meta name="author" content="parry">
+    
+    <meta name="description" content="类型判断想必是每个开发语言都需要接触的，然而每个开发语言的不同当然判断数据类型的方式也不一样，JavaScript虽然是弱类型语言但是其中也是有数据类型之分的，让我们一起喊出JavaScript的基本数据类型都有什么，字符串、数字、布尔、数组、对象、Null、Undefined
+typeof1234">
+    
+    
+
+    
+    <link rel="alternative" href="YOUR_RSS_ADDRESS" title="parry" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/blog/favicon.png">
+    
+    
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>js之类型判断 | parry</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="/blog/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/blog/css/style.css">
+
+    <!-- Javascript -->
+    <script src="/blog/js/jquery-2.1.0.min.js"></script>
+    
+    <script src="/blog/bootstrap/js/bootstrap.min.js"></script>
+
+    <script src="/blog/js/common.js"></script>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-inverse" role="banner">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a target="_blank" class="navbar-brand" href="http://code-helloworld.com" title="parry">parry</a>
+
+            
+            </div>
+
+            <div role="navigation" class="collapse navbar-collapse bs-navbar-collapse">
+                
+                <a id="search" href="javascript:" class="navbar-text pull-right">搜索</a>
+                <ul class="nav navbar-nav">
+                    
+                    <li id="nav-index"><a href="/blog">首页</a></li>
+                    
+                    <li id="nav-archives"><a href="/blog/archives">归档</a></li>
+                    
+                    
+                    <li><a href="https://github.com/adminparry" target="_blank">GitHub</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div style="width:100%;height:100%;background:white;display:none;">
+ 
+    </div>
+    <script>
+    var backRoot = "/blog/images/background/";
+    var backArray = [ "1.jpg", "2.jpg", "3.jpg",  ];
+        
+    $(function() {
+        // page-id...
+        var pageId = "2017/07/03/js之类型判断/";
+        pageId = pageId.substr(0, pageId.indexOf("/"));
+        if(pageId === "") pageId = "index";
+        
+        $("#nav-" + pageId).addClass("active");
+        $('#search').click(function(){
+
+        })
+    });
+    </script>
+
+    <article class="post container">
+    <div class="well post-body first-post last-post">
+        <h1>js之类型判断</h1>
+        
+        <div class="time-info">
+发表于:<time datetime="2017-07-03T08:38:08.569Z" itemprop="datePublished">2017-07-03</time>，更新于:<time datetime="2017-01-10T10:50:10.000Z" itemprop="dateModified">2017-01-10</time>，By <a href="http://code-helloworld.com" title="parry">parry</a>
+        </div>
+        
+        <div class="post-body-inner">
+            <div id="toc" class="toc-article well">
+                <strong class="toc-title">大纲</strong>
+                <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#typeof"><span class="toc-number">1.</span> <span class="toc-text">typeof</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Object-prototype-toString-call"><span class="toc-number">2.</span> <span class="toc-text">Object.prototype.toString.call</span></a></li></ol>
+            </div>
+            <div class="description">
+
+            <p>类型判断想必是每个开发语言都需要接触的，然而每个开发语言的不同当然判断数据类型的方式也不一样，JavaScript虽然是弱类型语言但是其中也是有数据类型之分的，让我们一起喊出JavaScript的基本数据类型都有什么，字符串、数字、布尔、数组、对象、Null、Undefined</p>
+<h3 id="typeof"><a href="#typeof" class="headerlink" title="typeof"></a>typeof</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">typeof <span class="literal">true</span> // <span class="string">"boolean"</span></div><div class="line"></div><div class="line">typeof unde // <span class="string">"undefined"</span></div><div class="line"></div><div class="line">typeof undefined // <span class="string">"undefined"</span></div><div class="line"></div><div class="line">typeof 1 // <span class="string">"number"</span></div><div class="line"></div><div class="line">typeof null // <span class="string">"object"</span></div><div class="line"></div><div class="line">typeof <span class="string">"a"</span> // <span class="string">"string"</span></div><div class="line"></div><div class="line">typeof new Function // <span class="string">"function"</span></div><div class="line"></div><div class="line">typeof new Array // <span class="string">"object"</span></div></pre></td></tr></table></figure>
+<p>一元运算符typeof 可以提供快速简单的类型检查<br>注意typeof一元运算符如果检查一个不存在的变量 程序不会报错 返回类型为undefined</p>
+<h3 id="Object-prototype-toString-call"><a href="#Object-prototype-toString-call" class="headerlink" title="Object.prototype.toString.call"></a>Object.prototype.toString.call</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">Object.prototype.toString.call(&#123;&#125;);</div><div class="line"></div><div class="line">//<span class="string">"[object Object]"</span></div><div class="line"></div><div class="line">Object.prototype.toString.call([]);</div><div class="line"></div><div class="line">//<span class="string">"[object Array]"</span></div><div class="line"></div><div class="line">Object.prototype.toString.call(1);</div><div class="line"></div><div class="line">//<span class="string">"[object Number]"</span></div><div class="line"></div><div class="line">Object.prototype.toString.call(<span class="string">"1"</span>);</div><div class="line"></div><div class="line">//<span class="string">"[object String]"</span></div><div class="line"></div><div class="line">Object.prototype.toString.call(null);</div><div class="line"></div><div class="line">//<span class="string">"[object Null]"</span></div><div class="line"></div><div class="line">Object.prototype.toString.call(undefined);</div><div class="line"></div><div class="line">//<span class="string">"[object Undefined]"</span></div><div class="line"></div><div class="line">Object.prototype.toString.call(<span class="literal">true</span>);</div><div class="line"></div><div class="line">//<span class="string">"[object Boolean]"</span></div></pre></td></tr></table></figure>
+<p>用对象原型身上的toString方法，这样检查起来相对typeof给我们的结果会“精确”一点</p>
+
+            </div>
+
+			
+            <section class="comment">
+<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="/blog/2017/07/03/js之类型判断/" data-title="js之类型判断" data-url="http://code-helloworld.com/blog/2017/07/03/js之类型判断/"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"YOUR_DUOSHUO_SHORT_NAME"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0]
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+</section>
+        </div>
+    </div>
+</article>
+
+    <footer id="footer">
+    	<br />
+        <small>this blog power by <a href="https://hexo.io/" target="_blank">Hexo</a><br />
+        <small>&copy; 2014 parry</small>
+    </footer>
+
+    
+
+
+</body>
+</html>
+

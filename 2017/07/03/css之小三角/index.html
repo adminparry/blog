@@ -1,0 +1,150 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    
+    <meta name="author" content="parry">
+    
+    <meta name="description" content="小三角这个元素无论在web网站或者app移动应用，都有很广泛的使用，比如说什么宝，什么汇，什么街之类的都有，还有微信啊qq啊基本都有，这个样式很常见，用的挺多的，所以记录一下
+代码示例1234567891011121314151617181920212223242526272829303132333">
+    
+    
+
+    
+    <link rel="alternative" href="YOUR_RSS_ADDRESS" title="parry" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/blog/favicon.png">
+    
+    
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>css之小三角 | parry</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="/blog/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/blog/css/style.css">
+
+    <!-- Javascript -->
+    <script src="/blog/js/jquery-2.1.0.min.js"></script>
+    
+    <script src="/blog/bootstrap/js/bootstrap.min.js"></script>
+
+    <script src="/blog/js/common.js"></script>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-inverse" role="banner">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a target="_blank" class="navbar-brand" href="http://code-helloworld.com" title="parry">parry</a>
+
+            
+            </div>
+
+            <div role="navigation" class="collapse navbar-collapse bs-navbar-collapse">
+                
+                <a id="search" href="javascript:" class="navbar-text pull-right">搜索</a>
+                <ul class="nav navbar-nav">
+                    
+                    <li id="nav-index"><a href="/blog">首页</a></li>
+                    
+                    <li id="nav-archives"><a href="/blog/archives">归档</a></li>
+                    
+                    
+                    <li><a href="https://github.com/adminparry" target="_blank">GitHub</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div style="width:100%;height:100%;background:white;display:none;">
+ 
+    </div>
+    <script>
+    var backRoot = "/blog/images/background/";
+    var backArray = [ "1.jpg", "2.jpg", "3.jpg",  ];
+        
+    $(function() {
+        // page-id...
+        var pageId = "2017/07/03/css之小三角/";
+        pageId = pageId.substr(0, pageId.indexOf("/"));
+        if(pageId === "") pageId = "index";
+        
+        $("#nav-" + pageId).addClass("active");
+        $('#search').click(function(){
+
+        })
+    });
+    </script>
+
+    <article class="post container">
+    <div class="well post-body first-post last-post">
+        <h1>css之小三角</h1>
+        
+        <div class="time-info">
+发表于:<time datetime="2017-07-03T08:38:08.519Z" itemprop="datePublished">2017-07-03</time>，更新于:<time datetime="2017-02-21T01:25:56.000Z" itemprop="dateModified">2017-02-21</time>，By <a href="http://code-helloworld.com" title="parry">parry</a>
+        </div>
+        
+        <div class="post-body-inner">
+            <div id="toc" class="toc-article well">
+                <strong class="toc-title">大纲</strong>
+                <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#代码示例"><span class="toc-number">1.</span> <span class="toc-text">代码示例</span></a></li></ol>
+            </div>
+            <div class="description">
+
+            <p>小三角这个元素无论在web网站或者app移动应用，都有很广泛的使用，比如说什么宝，什么汇，什么街之类的都有，还有微信啊qq啊基本都有，这个样式很常见，用的挺多的，所以记录一下</p>
+<h3 id="代码示例"><a href="#代码示例" class="headerlink" title="代码示例"></a>代码示例</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html&gt;</div><div class="line">&lt;head&gt;</div><div class="line">&lt;meta charset=<span class="string">"utf-8"</span>&gt;</div><div class="line">&lt;title&gt;transparent&lt;/title&gt;</div><div class="line">&lt;style&gt;</div><div class="line">body&#123;</div><div class="line">	background: <span class="comment">#ccc;</span></div><div class="line">&#125;</div><div class="line"></div><div class="line">._left&#123;</div><div class="line">	width:200px;</div><div class="line">	padding:20px;</div><div class="line">	height:auto;</div><div class="line">	position:relative;</div><div class="line">	background:white;</div><div class="line">	margin:40px;</div><div class="line">	border-radius:3px;</div><div class="line">	border: 1px solid;</div><div class="line">&#125;</div><div class="line">._left:after&#123;</div><div class="line">	right:100%;top:50%;</div><div class="line">	border:0px solid transparent;</div><div class="line">	content:<span class="string">" "</span>;</div><div class="line">	width:0; height:0;</div><div class="line">	position: absolute;</div><div class="line">	border-right-color:white;</div><div class="line">	border-width:6px;</div><div class="line">	margin-top:-6px;</div><div class="line">&#125;</div><div class="line">._left:before&#123;</div><div class="line">	right:100%;top:50%;</div><div class="line">	border:0px solid transparent;</div><div class="line">	content:<span class="string">" "</span>;</div><div class="line">	width:0; height:0;</div><div class="line">	position: absolute;</div><div class="line">	border-right-color:black;</div><div class="line">	border-width:7px;</div><div class="line">	margin-top:-7px;</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line">._right&#123;</div><div class="line">	width:200px;</div><div class="line">	padding:20px;</div><div class="line">	height:auto;</div><div class="line">	position:relative;</div><div class="line">	background:<span class="comment">#99CC33;</span></div><div class="line">	margin:40px;</div><div class="line">	border-radius:3px;</div><div class="line">	border: 1px solid;</div><div class="line">&#125;</div><div class="line">._right:after, ._right:before&#123;</div><div class="line">	left:100%;top: 50%;</div><div class="line">	border:10px solid transparent;</div><div class="line">	content:<span class="string">" "</span>;</div><div class="line">	width:0; height:0;</div><div class="line">	position: absolute;</div><div class="line">&#125;</div><div class="line">._right:after &#123;</div><div class="line">	border-left-color:<span class="comment">#99CC33;</span></div><div class="line">	border-width:6px;</div><div class="line">	margin-top:-6px;</div><div class="line">&#125;</div><div class="line">._right:before&#123;</div><div class="line">	border-left-color:black;</div><div class="line">	border-width: 7px;</div><div class="line">	margin-top:-7px;</div><div class="line">&#125;</div><div class="line"></div><div class="line">&lt;/style&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line"></div><div class="line">&lt;div class=<span class="string">"_left"</span>&gt;</div><div class="line">	how are you!</div><div class="line">&lt;/div&gt;</div><div class="line">&lt;div class=<span class="string">"_right"</span>&gt;</div><div class="line">	speak chinese,please !</div><div class="line">&lt;/div&gt;</div><div class="line"></div><div class="line"></div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+<p>当然实现的方式有很多，这里只使用css样式来书写一种</p>
+
+            </div>
+
+			
+            <section class="comment">
+<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="/blog/2017/07/03/css之小三角/" data-title="css之小三角" data-url="http://code-helloworld.com/blog/2017/07/03/css之小三角/"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"YOUR_DUOSHUO_SHORT_NAME"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0]
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+</section>
+        </div>
+    </div>
+</article>
+
+    <footer id="footer">
+    	<br />
+        <small>this blog power by <a href="https://hexo.io/" target="_blank">Hexo</a><br />
+        <small>&copy; 2014 parry</small>
+    </footer>
+
+    
+
+
+</body>
+</html>
+

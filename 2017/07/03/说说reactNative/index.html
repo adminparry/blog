@@ -1,0 +1,162 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    
+    <meta name="author" content="parry">
+    
+    <meta name="description" content="说说前端框架的新宠react，reactNative是react的其中的一个分支，自从react别众人周知以来，就有大量前端开发者去真正的去运用到项目开发之中，react真正想完善的其实就是reactNative，它在内部帮助我们去做与ios Android的接口桥，使得前端开发人员也可以做原生的i">
+    
+    
+
+    
+    <link rel="alternative" href="YOUR_RSS_ADDRESS" title="parry" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/blog/favicon.png">
+    
+    
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>说说reactNative | parry</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="/blog/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/blog/css/style.css">
+
+    <!-- Javascript -->
+    <script src="/blog/js/jquery-2.1.0.min.js"></script>
+    
+    <script src="/blog/bootstrap/js/bootstrap.min.js"></script>
+
+    <script src="/blog/js/common.js"></script>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-inverse" role="banner">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a target="_blank" class="navbar-brand" href="http://code-helloworld.com" title="parry">parry</a>
+
+            
+            </div>
+
+            <div role="navigation" class="collapse navbar-collapse bs-navbar-collapse">
+                
+                <a id="search" href="javascript:" class="navbar-text pull-right">搜索</a>
+                <ul class="nav navbar-nav">
+                    
+                    <li id="nav-index"><a href="/blog">首页</a></li>
+                    
+                    <li id="nav-archives"><a href="/blog/archives">归档</a></li>
+                    
+                    
+                    <li><a href="https://github.com/adminparry" target="_blank">GitHub</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div style="width:100%;height:100%;background:white;display:none;">
+ 
+    </div>
+    <script>
+    var backRoot = "/blog/images/background/";
+    var backArray = [ "1.jpg", "2.jpg", "3.jpg",  ];
+        
+    $(function() {
+        // page-id...
+        var pageId = "2017/07/03/说说reactNative/";
+        pageId = pageId.substr(0, pageId.indexOf("/"));
+        if(pageId === "") pageId = "index";
+        
+        $("#nav-" + pageId).addClass("active");
+        $('#search').click(function(){
+
+        })
+    });
+    </script>
+
+    <article class="post container">
+    <div class="well post-body first-post last-post">
+        <h1>说说reactNative</h1>
+        
+        <div class="time-info">
+发表于:<time datetime="2017-07-03T08:38:08.689Z" itemprop="datePublished">2017-07-03</time>，更新于:<time datetime="2017-02-11T11:31:22.000Z" itemprop="dateModified">2017-02-11</time>，By <a href="http://code-helloworld.com" title="parry">parry</a>
+        </div>
+        
+        <div class="post-body-inner">
+            <div id="toc" class="toc-article well">
+                <strong class="toc-title">大纲</strong>
+                <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#index-ios-js"><span class="toc-number">1.</span> <span class="toc-text">index.ios.js</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#View-js"><span class="toc-number">2.</span> <span class="toc-text">View.js</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#TabBarIOS-js"><span class="toc-number">3.</span> <span class="toc-text">TabBarIOS.js</span></a></li></ol>
+            </div>
+            <div class="description">
+
+            <p>说说前端框架的新宠react，reactNative是react的其中的一个分支，自从react别众人周知以来，就有大量前端开发者去真正的去运用到项目开发之中，react真正想完善的其实就是reactNative，它在内部帮助我们去做与ios Android的接口桥，使得前端开发人员也可以做原生的ios Android开发，前端已经从一个最简单的工作变成了最丰富的工作</p>
+<p><a href="http://facebook.github.io/react-native/" target="_blank" rel="external">官方网址</a><br>首先react-native 是用于开发移动软件 android ios 应用<br>原理：react-native 作为中间件为JavaScript 提供接口 也就是说用JavaScript的方式去调用软件开发平台对应的原生接口</p>
+<ol>
+<li>开发平台环境搭建 android ios</li>
+<li>react-native 对应的也可以在npm中进行管理</li>
+<li>官方网站文档</li>
+<li>去写去用 </li>
+</ol>
+<p>android 安卓开发环境 需要java环境<br>ios 开发环境 需要Xcode对应的支持</p>
+<p><a href="http://wiki.jikexueyuan.com/project/react-native/" target="_blank" rel="external">极客学院文档地址</a></p>
+<p>实际上来说实现移动端软件程序有好多解决方案，最起初的cordova就可以把html css js 编写的网页打包成应用程序，实现一个阅读浏览而非游戏的应用程序非常简单，画面也足够流畅，而reactNative来说似乎是想无缝对接android ios 谁也不知道未来会怎样，拭目以待</p>
+<p><img src="/blog/images/react-native/1.png" alt="react-native"><br>随便做点内容<br>说在前面的话：熟悉react 和 android或者ios开发的同学 上手非常容易</p>
+<p><img src="/blog/images/react-native/2.png" alt="react-native"><br><img src="/blog/images/react-native/3.png" alt="react-native"></p>
+<h3 id="index-ios-js"><a href="#index-ios-js" class="headerlink" title="index.ios.js"></a>index.ios.js</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">import React, &#123;</div><div class="line">  AppRegistry,</div><div class="line">  Component,</div><div class="line">  StyleSheet,</div><div class="line">  Text,</div><div class="line">  View,</div><div class="line">  TabBarIOS,</div><div class="line">&#125; from <span class="string">'react-native'</span>;</div><div class="line"></div><div class="line">import Shit from <span class="string">'./TabBarIOS.js'</span>;</div><div class="line">import Views from <span class="string">'./View.js'</span>;</div><div class="line"></div><div class="line">class AwesomeProject extends Component&#123;</div><div class="line">  <span class="function"><span class="title">render</span></span>()&#123;</div><div class="line">    <span class="built_in">return</span>(</div><div class="line">     </div><div class="line">        &lt;Shit/&gt;</div><div class="line"></div><div class="line">  </div><div class="line">    )</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">AppRegistry.registerComponent(<span class="string">'AwesomeProject'</span>, () =&gt; AwesomeProject);</div></pre></td></tr></table></figure>
+<h3 id="View-js"><a href="#View-js" class="headerlink" title="View.js"></a>View.js</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div></pre></td><td class="code"><pre><div class="line">import React, &#123;</div><div class="line">  AppRegistry,</div><div class="line">  Component,</div><div class="line">  StyleSheet,</div><div class="line">  Text,</div><div class="line">  View</div><div class="line">&#125; from <span class="string">'react-native'</span>;</div><div class="line"></div><div class="line"><span class="built_in">export</span> default class Views extends Component &#123;</div><div class="line">  <span class="function"><span class="title">render</span></span>() &#123;</div><div class="line">    <span class="built_in">return</span> (</div><div class="line">      &lt;View style=&#123;styles.container&#125;&gt;</div><div class="line">        &lt;Text style=&#123;styles.welcome&#125;&gt;</div><div class="line">          Welcome to React Native!</div><div class="line">        &lt;/Text&gt;</div><div class="line">        &lt;Text style=&#123;styles.instructions&#125;&gt;</div><div class="line">          To get started, edit index.android.js</div><div class="line">        &lt;/Text&gt;</div><div class="line">        &lt;Text style=&#123;styles.instructions&#125;&gt;</div><div class="line">          Shake or press menu button <span class="keyword">for</span> dev menu</div><div class="line">        &lt;/Text&gt;</div><div class="line">      &lt;/View&gt;</div><div class="line">    );</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">const styles = StyleSheet.create(&#123;</div><div class="line">  container: &#123;</div><div class="line">    flex: 1,</div><div class="line">    justifyContent: <span class="string">'center'</span>,</div><div class="line">    alignItems: <span class="string">'center'</span>,</div><div class="line">    backgroundColor: <span class="string">'#F5FCFF'</span>,</div><div class="line">  &#125;,</div><div class="line">  welcome: &#123;</div><div class="line">    fontSize: 20,</div><div class="line">    textAlign: <span class="string">'center'</span>,</div><div class="line">    margin: 10,</div><div class="line">  &#125;,</div><div class="line">  instructions: &#123;</div><div class="line">    textAlign: <span class="string">'center'</span>,</div><div class="line">    color: <span class="string">'#333333'</span>,</div><div class="line">    marginBottom: 5,</div><div class="line">  &#125;,</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h3 id="TabBarIOS-js"><a href="#TabBarIOS-js" class="headerlink" title="TabBarIOS.js"></a>TabBarIOS.js</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div></pre></td><td class="code"><pre><div class="line"><span class="string">'use strict'</span>;</div><div class="line"></div><div class="line">import React, &#123;</div><div class="line">   Component,</div><div class="line">  StyleSheet,</div><div class="line">  TabBarIOS,</div><div class="line">  Text,</div><div class="line">  View,</div><div class="line">&#125; from <span class="string">'react-native'</span>;</div><div class="line">import Views from <span class="string">'./View.js'</span>;</div><div class="line"></div><div class="line">var base64Icon = <span class="string">'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEsAAABLCAQAAACSR7JhAAADtUlEQVR4Ac3YA2Bj6QLH0XPT1Fzbtm29tW3btm3bfLZtv7e2ObZnms7d8Uw098tuetPzrxv8wiISrtVudrG2JXQZ4VOv+qUfmqCGGl1mqLhoA52oZlb0mrjsnhKpgeUNEs91Z0pd1kvihA3ULGVHiQO2narKSHKkEMulm9VgUyE60s1aWoMQUbpZOWE+kaqs4eLEjdIlZTcFZB0ndc1+lhB1lZrIuk5P2aib1NBpZaL+JaOGIt0ls47SKzLC7CqrlGF6RZ09HGoNy1lYl2aRSWL5GuzqWU1KafRdoRp0iOQEiDzgZPnG6DbldcomadViflnl/cL93tOoVbsOLVM2jylvdWjXolWX1hmfZbGR/wjypDjFLSZIRov09BgYmtUqPQPlQrPapecLgTIy0jMgPKtTeob2zWtrGH3xvjUkPCtNg/tm1rjwrMa+mdUkPd3hWbH0jArPGiU9ufCsNNWFZ40wpwn+62/66R2RUtoso1OB34tnLOcy7YB1fUdc9e0q3yru8PGM773vXsuZ5YIZX+5xmHwHGVvlrGPN6ZSiP1smOsMMde40wKv2VmwPPVXNut4sVpUreZiLBHi0qln/VQeI/LTMYXpsJtFiclUN+5HVZazim+Ky+7sAvxWnvjXrJFneVtLWLyPJu9K3cXLWeOlbMTlrIelbMDlrLenrjEQOtIF+fuI9xRp9ZBFp6+b6WT8RrxEpdK64BuvHgDk+vUy+b5hYk6zfyfs051gRoNO1usU12WWRWL73/MMEy9pMi9qIrR4ZpV16Rrvduxazmy1FSvuFXRkqTnE7m2kdb5U8xGjLw/spRr1uTov4uOgQE+0N/DvFrG/Jt7i/FzwxbA9kDanhf2w+t4V97G8lrT7wc08aA2QNUkuTfW/KimT01wdlfK4yEw030VfT0RtZbzjeMprNq8m8tnSTASrTLti64oBNdpmMQm0eEwvfPwRbUBywG5TzjPCsdwk3IeAXjQblLCoXnDVeoAz6SfJNk5TTzytCNZk/POtTSV40NwOFWzw86wNJRpubpXsn60NJFlHeqlYRbslqZm2jnEZ3qcSKgm0kTli3zZVS7y/iivZTweYXJ26Y+RTbV1zh3hYkgyFGSTKPfRVbRqWWVReaxYeSLarYv1Qqsmh1s95S7G+eEWK0f3jYKTbV6bOwepjfhtafsvUsqrQvrGC8YhmnO9cSCk3yuY984F1vesdHYhWJ5FvASlacshUsajFt2mUM9pqzvKGcyNJW0arTKN1GGGzQlH0tXwLDgQTurS8eIQAAAABJRU5ErkJggg=='</span>;</div><div class="line"></div><div class="line"><span class="built_in">export</span> default class Shit extends Component&#123;</div><div class="line">  constructor (props)&#123;</div><div class="line">    super(props);</div><div class="line">    this.statics = this.statics.bind(this);</div><div class="line">    this.displayName = this.displayName.bind(this);</div><div class="line">    this.state = &#123;</div><div class="line">      selectedTab: <span class="string">'redTab'</span>,</div><div class="line">      notifCount: 0,</div><div class="line">      presses: 0,</div><div class="line">    &#125;</div><div class="line">    this._renderContent = this._renderContent.bind(this);</div><div class="line">  &#125;</div><div class="line">  <span class="function"><span class="title">statics</span></span>() &#123;</div><div class="line">    <span class="built_in">return</span>&#123;</div><div class="line">       title: <span class="string">'&lt;TabBarIOS&gt;'</span>,</div><div class="line">       description: <span class="string">'Tab-based navigation.'</span>,</div><div class="line">    &#125;</div><div class="line">   </div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="function"><span class="title">displayName</span></span>()&#123;</div><div class="line">    <span class="built_in">return</span> <span class="string">'TabBarExample'</span>;</div><div class="line">  &#125; </div><div class="line"></div><div class="line">  </div><div class="line">  _renderContent(color: string, pageText: string, num?: number) &#123;</div><div class="line">    <span class="built_in">return</span> (</div><div class="line">      &lt;View style=&#123;[styles.tabContent, &#123;backgroundColor: color&#125;]&#125;&gt;</div><div class="line">        &lt;Text style=&#123;styles.tabText&#125;&gt;&#123;pageText&#125;&lt;/Text&gt;</div><div class="line">        &lt;Text style=&#123;styles.tabText&#125;&gt;&#123;num&#125; re-renders of the &#123;pageText&#125;&lt;/Text&gt;</div><div class="line">      &lt;/View&gt;</div><div class="line">    );</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="function"><span class="title">render</span></span>() &#123;</div><div class="line">    <span class="built_in">return</span> (</div><div class="line">      &lt;TabBarIOS</div><div class="line">        tintColor=<span class="string">"white"</span></div><div class="line">        barTintColor=<span class="string">"darkslateblue"</span>&gt;</div><div class="line">        &lt;TabBarIOS.Item</div><div class="line">          title=<span class="string">"Blue Tab"</span></div><div class="line">          icon=&#123;&#123;uri: base64Icon, scale: 3&#125;&#125;</div><div class="line">          selected=&#123;this.state.selectedTab === <span class="string">'blueTab'</span>&#125;</div><div class="line">          onPress=&#123;() =&gt; &#123;</div><div class="line">            this.setState(&#123;</div><div class="line">              selectedTab: <span class="string">'blueTab'</span>,</div><div class="line">            &#125;);</div><div class="line">          &#125;&#125;&gt;</div><div class="line">          &#123;this._renderContent(<span class="string">'#414A8C'</span>, <span class="string">'Blue Tab'</span>)&#125;</div><div class="line">        &lt;/TabBarIOS.Item&gt;</div><div class="line">        &lt;TabBarIOS.Item</div><div class="line">          systemIcon=<span class="string">"history"</span></div><div class="line">          badge=&#123;this.state.notifCount &gt; 0 ? this.state.notifCount : undefined&#125;</div><div class="line">          selected=&#123;this.state.selectedTab === <span class="string">'redTab'</span>&#125;</div><div class="line">          onPress=&#123;() =&gt; &#123;</div><div class="line">            this.setState(&#123;</div><div class="line">              selectedTab: <span class="string">'redTab'</span>,</div><div class="line">              notifCount: this.state.notifCount + 1,</div><div class="line">            &#125;);</div><div class="line">          &#125;&#125;&gt;</div><div class="line">          &#123;this._renderContent(<span class="string">'#783E33'</span>, <span class="string">'Red Tab'</span>, this.state.notifCount)&#125;</div><div class="line">        &lt;/TabBarIOS.Item&gt;</div><div class="line">        &lt;TabBarIOS.Item</div><div class="line">          icon=&#123;&#123;uri: base64Icon, scale: 3&#125;&#125;</div><div class="line">          title=<span class="string">"More"</span></div><div class="line">          selected=&#123;this.state.selectedTab === <span class="string">'greenTab'</span>&#125;</div><div class="line">          onPress=&#123;() =&gt; &#123;</div><div class="line">            this.setState(&#123;</div><div class="line">              selectedTab: <span class="string">'greenTab'</span>,</div><div class="line">              presses: this.state.presses + 1</div><div class="line">            &#125;);</div><div class="line">          &#125;&#125;&gt;</div><div class="line">          &#123;this._renderContent(<span class="string">'#21551C'</span>, <span class="string">'Green Tab'</span>, this.state.presses)&#125;</div><div class="line">        &lt;/TabBarIOS.Item&gt;</div><div class="line">      &lt;/TabBarIOS&gt;</div><div class="line">    );</div><div class="line">  &#125;</div><div class="line"></div><div class="line">&#125;;</div><div class="line"></div><div class="line">var styles = StyleSheet.create(&#123;</div><div class="line">  tabContent: &#123;</div><div class="line">    flex: 1,</div><div class="line">    alignItems: <span class="string">'center'</span>,</div><div class="line">  &#125;,</div><div class="line">  tabText: &#123;</div><div class="line">    color: <span class="string">'white'</span>,</div><div class="line">    margin: 20,</div><div class="line">  &#125;,</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+
+            </div>
+
+			
+            <section class="comment">
+<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="/blog/2017/07/03/说说reactNative/" data-title="说说reactNative" data-url="http://code-helloworld.com/blog/2017/07/03/说说reactNative/"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"YOUR_DUOSHUO_SHORT_NAME"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0]
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+</section>
+        </div>
+    </div>
+</article>
+
+    <footer id="footer">
+    	<br />
+        <small>this blog power by <a href="https://hexo.io/" target="_blank">Hexo</a><br />
+        <small>&copy; 2014 parry</small>
+    </footer>
+
+    
+
+
+</body>
+</html>
+
