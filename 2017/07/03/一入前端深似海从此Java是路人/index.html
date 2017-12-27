@@ -1,0 +1,152 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    
+    <meta name="author" content="parry">
+    
+    <meta name="description" content="一入前端深似海从此Java是路人
+面向对象编程对于JavaScript来说并不是面向对象语言，但可以实现面向对象编程（实际上就是用面向对象的思维去写代码）对于Java开发人员来说，JavaScript免不了得写个一两句，你会发现他们的写法都是构造函数而他们如果是写的多的话就会发现这些1 this有的">
+    
+    
+
+    
+    <link rel="alternative" href="YOUR_RSS_ADDRESS" title="parry" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/blog/favicon.png">
+    
+    
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>一入前端深似海从此Java是路人 | parry</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="/blog/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/blog/css/style.css">
+
+    <!-- Javascript -->
+    <script src="/blog/js/jquery-2.1.0.min.js"></script>
+    
+    <script src="/blog/bootstrap/js/bootstrap.min.js"></script>
+
+    <script src="/blog/js/common.js"></script>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-inverse" role="banner">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a target="_blank" class="navbar-brand" href="http://code-helloworld.com" title="parry">parry</a>
+
+            
+            </div>
+
+            <div role="navigation" class="collapse navbar-collapse bs-navbar-collapse">
+                
+                <a id="search" href="javascript:" class="navbar-text pull-right">搜索</a>
+                <ul class="nav navbar-nav">
+                    
+                    <li id="nav-index"><a href="/blog">首页</a></li>
+                    
+                    <li id="nav-archives"><a href="/blog/archives">归档</a></li>
+                    
+                    
+                    <li><a href="https://github.com/adminparry" target="_blank">GitHub</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div style="width:100%;height:100%;background:white;display:none;">
+ 
+    </div>
+    <script>
+    var backRoot = "/blog/images/background/";
+    var backArray = [ "1.jpg", "2.jpg", "3.jpg",  ];
+        
+    $(function() {
+        // page-id...
+        var pageId = "2017/07/03/一入前端深似海从此Java是路人/";
+        pageId = pageId.substr(0, pageId.indexOf("/"));
+        if(pageId === "") pageId = "index";
+        
+        $("#nav-" + pageId).addClass("active");
+        $('#search').click(function(){
+
+        })
+    });
+    </script>
+
+    <article class="post container">
+    <div class="well post-body first-post last-post">
+        <h1>一入前端深似海从此Java是路人</h1>
+        
+        <div class="time-info">
+发表于:<time datetime="2017-07-03T14:45:00.134Z" itemprop="datePublished">2017-07-03</time>，更新于:<time datetime="2017-07-03T15:17:30.631Z" itemprop="dateModified">2017-07-03</time>，By <a href="http://code-helloworld.com" title="parry">parry</a>
+        </div>
+        
+        <div class="post-body-inner">
+            <div id="toc" class="toc-article well">
+                <strong class="toc-title">大纲</strong>
+                <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#面向对象编程"><span class="toc-number">1.</span> <span class="toc-text">面向对象编程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ioc容器"><span class="toc-number">2.</span> <span class="toc-text">ioc容器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#依赖注入"><span class="toc-number">3.</span> <span class="toc-text">依赖注入</span></a></li></ol>
+            </div>
+            <div class="description">
+
+            <p>一入前端深似海从此Java是路人</p>
+<h3 id="面向对象编程"><a href="#面向对象编程" class="headerlink" title="面向对象编程"></a>面向对象编程</h3><p>对于JavaScript来说并不是面向对象语言，但可以实现面向对象编程（实际上就是用面向对象的思维去写代码）<br>对于Java开发人员来说，JavaScript免不了得写个一两句，你会发现他们的写法都是构造函数<br>而他们如果是写的多的话就会发现这些<br>1 this有的时候对有的时候不对<br>2 继承没有现成的关键字<br>3 没有什么现成的像面向接口编程一样提供方法<br>4 参数个数不一致都可以</p>
+<p>对于JavaScript来说没有什么东西是面向接口编程有固定的方法固定的参数，什么东西都是需要自己手动实现或者引入相关的类库的<br>相关的类库一般都没有你想要的东西，不好意思就是这么繁琐</p>
+<h3 id="ioc容器"><a href="#ioc容器" class="headerlink" title="ioc容器"></a>ioc容器</h3><p>前端同学可以通过amd和cmd，requirejs seajs来理解ioc这个概念，其实现思维都是一样的<br>ioc控制反转一句话理解就是创建个对象用来存东西，每个东西有自己的名字，用的时候根据这个名字就拿到了这个东西-结束</p>
+<h3 id="依赖注入"><a href="#依赖注入" class="headerlink" title="依赖注入"></a>依赖注入</h3><p>依赖注入是指获取对象不通过手动实例而是通过ioc进行创建和获取<br>依赖注入的核心是通过反射来实现的<br>而对于前端来说是动态script标签来实现的</p>
+
+            </div>
+
+			
+            <section class="comment">
+<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="/blog/2017/07/03/一入前端深似海从此Java是路人/" data-title="一入前端深似海从此Java是路人" data-url="http://code-helloworld.com/blog/2017/07/03/一入前端深似海从此Java是路人/"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"YOUR_DUOSHUO_SHORT_NAME"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0]
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+</section>
+        </div>
+    </div>
+</article>
+
+    <footer id="footer">
+    	<br />
+        <small>this blog power by <a href="https://hexo.io/" target="_blank">Hexo</a><br />
+        <small>&copy; 2014 parry</small>
+    </footer>
+
+    
+
+
+</body>
+</html>
+

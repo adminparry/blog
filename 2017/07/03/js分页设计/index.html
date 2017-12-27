@@ -1,0 +1,150 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    
+    <meta name="author" content="parry">
+    
+    <meta name="description" content="Quick Start瀑布流分页js瀑布流效果，当网页为展示无数图片，或者无数文章时，如果首次不进行分批传输的话，页面很容易被数量过多的元素及资源所憋脚，这个时候采用瀑布流的形式比较合理，原理为用户所显示的内容为准，只在用户所浏览的多少而给予多少资源    
+123456789window.onsc">
+    
+    
+
+    
+    <link rel="alternative" href="YOUR_RSS_ADDRESS" title="parry" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/blog/favicon.png">
+    
+    
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>js分页设计.bak | parry</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="/blog/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/blog/css/style.css">
+
+    <!-- Javascript -->
+    <script src="/blog/js/jquery-2.1.0.min.js"></script>
+    
+    <script src="/blog/bootstrap/js/bootstrap.min.js"></script>
+
+    <script src="/blog/js/common.js"></script>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-inverse" role="banner">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a target="_blank" class="navbar-brand" href="http://code-helloworld.com" title="parry">parry</a>
+
+            
+            </div>
+
+            <div role="navigation" class="collapse navbar-collapse bs-navbar-collapse">
+                
+                <a id="search" href="javascript:" class="navbar-text pull-right">搜索</a>
+                <ul class="nav navbar-nav">
+                    
+                    <li id="nav-index"><a href="/blog">首页</a></li>
+                    
+                    <li id="nav-archives"><a href="/blog/archives">归档</a></li>
+                    
+                    
+                    <li><a href="https://github.com/adminparry" target="_blank">GitHub</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div style="width:100%;height:100%;background:white;display:none;">
+ 
+    </div>
+    <script>
+    var backRoot = "/blog/images/background/";
+    var backArray = [ "1.jpg", "2.jpg", "3.jpg",  ];
+        
+    $(function() {
+        // page-id...
+        var pageId = "2017/07/03/js分页设计/";
+        pageId = pageId.substr(0, pageId.indexOf("/"));
+        if(pageId === "") pageId = "index";
+        
+        $("#nav-" + pageId).addClass("active");
+        $('#search').click(function(){
+
+        })
+    });
+    </script>
+
+    <article class="post container">
+    <div class="well post-body first-post last-post">
+        <h1>js分页设计.bak</h1>
+        
+        <div class="time-info">
+发表于:<time datetime="2017-07-03T08:38:08.586Z" itemprop="datePublished">2017-07-03</time>，更新于:<time datetime="2017-11-12T03:17:13.475Z" itemprop="dateModified">2017-11-12</time>，By <a href="http://code-helloworld.com" title="parry">parry</a>
+        </div>
+        
+        <div class="post-body-inner">
+            <div id="toc" class="toc-article well">
+                <strong class="toc-title">大纲</strong>
+                <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Quick-Start"><span class="toc-number">1.</span> <span class="toc-text">Quick Start</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#瀑布流分页"><span class="toc-number">1.1.</span> <span class="toc-text">瀑布流分页</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#页码分页"><span class="toc-number">1.2.</span> <span class="toc-text">页码分页</span></a></li></ol></li></ol>
+            </div>
+            <div class="description">
+
+            <h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="瀑布流分页"><a href="#瀑布流分页" class="headerlink" title="瀑布流分页"></a>瀑布流分页</h3><p>js瀑布流效果，当网页为展示无数图片，或者无数文章时，如果首次不进行分批传输的话，页面很容易被数量过多的元素及资源所憋脚，这个时候采用瀑布流的形式比较合理，原理为用户所显示的内容为准，只在用户所浏览的多少而给予多少资源    </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">window.onscroll=<span class="function"><span class="title">function</span></span>()&#123;</div><div class="line">	var scrollT=document.documentElement.scrollTop || document.body.scrollTop;</div><div class="line">	var scrollBottom=document.documentElement.clientHeight+scrollT;</div><div class="line">	</div><div class="line">	document.title=scrollBottom+<span class="string">'| '</span>+document.body.scrollHeight;</div><div class="line">	<span class="keyword">if</span>(scrollBottom&gt;=document.body.scrollHeight)&#123;</div><div class="line">		&lt;!-- todo --&gt;</div><div class="line">	&#125;	</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="页码分页"><a href="#页码分页" class="headerlink" title="页码分页"></a>页码分页</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div><div class="line">155</div><div class="line">156</div><div class="line">157</div><div class="line">158</div><div class="line">159</div><div class="line">160</div><div class="line">161</div><div class="line">162</div><div class="line">163</div><div class="line">164</div><div class="line">165</div><div class="line">166</div><div class="line">167</div><div class="line">168</div><div class="line">169</div><div class="line">170</div><div class="line">171</div><div class="line">172</div><div class="line">173</div><div class="line">174</div><div class="line">175</div><div class="line">176</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html&gt;</div><div class="line">&lt;head&gt;</div><div class="line">	&lt;title&gt;&lt;/title&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">	&lt;div id=<span class="string">"page"</span>&gt;&lt;/div&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;script <span class="built_in">type</span>=<span class="string">"text/javascript"</span> src=<span class="string">"http://code.jquery.com/jquery-1.7.2.min.js"</span>&gt;&lt;/script&gt;</div><div class="line">&lt;script <span class="built_in">type</span>=<span class="string">"text/javascript"</span>&gt;</div><div class="line">	</div><div class="line">	<span class="keyword">function</span> Pager(parent, fn)&#123;</div><div class="line">		this.parent = parent;</div><div class="line">		this.fn = fn;</div><div class="line">		this.firstVilid();</div><div class="line">	&#125;</div><div class="line">	Pager.prototype = &#123;</div><div class="line">		constructor:Pager,</div><div class="line">		currentPageNum:100,</div><div class="line">		pageSize:10,</div><div class="line">		pageLength:5,</div><div class="line">		pageList:[],</div><div class="line">		middle:<span class="function"><span class="title">function</span></span>()&#123;</div><div class="line">			<span class="built_in">return</span> Math.ceil(this.pageLength / 2)</div><div class="line">		&#125;,</div><div class="line">		createPageList:<span class="function"><span class="title">function</span></span>()&#123;</div><div class="line">			// <span class="keyword">for</span> (var i = this.currentPageNum; i &lt;= this.pageLength; i++) &#123;</div><div class="line">			// 	this.pageList.push(i);</div><div class="line">			// &#125;</div><div class="line">			var evenOrodd = this.pageLength % 2;</div><div class="line">			</div><div class="line">			this.pageList = [];</div><div class="line"></div><div class="line"></div><div class="line">			var middle = this.middle();</div><div class="line"></div><div class="line">			// <span class="keyword">if</span>(this.currentPageNum &gt;= middle)&#123;</div><div class="line">				var i = 0;</div><div class="line">				</div><div class="line">				this.pageList.push(this.currentPageNum);</div><div class="line">				</div><div class="line"></div><div class="line">					</div><div class="line">				<span class="keyword">while</span>( ++i &lt; middle)&#123;</div><div class="line">					</div><div class="line">					this.pageList.unshift(this.currentPageNum - i);</div><div class="line">					this.pageList.push(this.currentPageNum + i);</div><div class="line">					</div><div class="line">				&#125;</div><div class="line"></div><div class="line">				<span class="keyword">if</span>(!!evenOrodd)&#123;</div><div class="line">					</div><div class="line">					// this.pageList.push(this.currentPageNum + middle);</div><div class="line">				&#125;<span class="keyword">else</span>&#123;</div><div class="line">					this.pageList.unshift(this.currentPageNum - middle);</div><div class="line">				&#125;</div><div class="line">			// &#125;<span class="keyword">else</span>&#123;</div><div class="line">				// <span class="keyword">for</span> (var i = 1; i &lt;= this.pageLength; i++) &#123;</div><div class="line">					// this.pageList.push(i);</div><div class="line">				// &#125;</div><div class="line">			// &#125;</div><div class="line">			console.log(this.pageList,this.currentPageNum)</div><div class="line">		&#125;,</div><div class="line">		firstVilid:<span class="keyword">function</span>(pageNo)&#123;</div><div class="line"></div><div class="line">			var self = this;</div><div class="line">			var pageNo = pageNo || self.currentPageNum;</div><div class="line">			this.xhr(&#123;</div><div class="line">				pageNo:pageNo,</div><div class="line">				pageSize:self.pageSize</div><div class="line">			&#125;,<span class="keyword">function</span>(res)&#123;</div><div class="line">				self.fn(res);</div><div class="line">				// 获取一共有多少页</div><div class="line">				var totalPage = Math.ceil(res.totalCount/ self.pageSize);</div><div class="line">			</div><div class="line">				<span class="keyword">if</span>(self.pageLength &lt;= 2 )&#123;</div><div class="line">					// 在这里可以添加上一页下一页 因为所必要的触发条件</div><div class="line">					console.log(<span class="string">'无法进行触发下一页和上一页'</span>);</div><div class="line">					self.pageLength = 3;</div><div class="line">				&#125;</div><div class="line"></div><div class="line">				<span class="keyword">if</span>(pageNo &gt;= totalPage)&#123;</div><div class="line">					// 服务器数据有更新</div><div class="line">					pageNo = totalPage &gt; 0 ? totalPage : 1;</div><div class="line">				&#125;</div><div class="line">				// 如果当前生成页码数大于总页码数</div><div class="line">				// 初始化的页码数</div><div class="line">				<span class="keyword">if</span>(totalPage &lt;= self.pageLength)&#123;</div><div class="line"></div><div class="line">					self.lowerpageList(totalPage);</div><div class="line">					self.createPageElement(pageNo)</div><div class="line">				&#125;<span class="keyword">else</span>&#123;</div><div class="line">					// 尾页的处理</div><div class="line"></div><div class="line">					<span class="keyword">if</span>( pageNo &gt; totalPage - self.pageLength + 1 )&#123;</div><div class="line"></div><div class="line">						self.lowerpageList(totalPage,totalPage - self.pageLength + 1);</div><div class="line">						self.createPageElement(pageNo)</div><div class="line">					&#125;<span class="keyword">else</span> <span class="keyword">if</span>(pageNo &lt; self.middle() + 1)&#123;</div><div class="line"></div><div class="line">						self.lowerpageList(self.pageLength);</div><div class="line">						self.createPageElement(pageNo)</div><div class="line">					&#125;<span class="keyword">else</span>&#123;</div><div class="line">						self.createPageList(pageNo);</div><div class="line">						self.createPageElement(pageNo)</div><div class="line">					&#125;</div><div class="line">				&#125;</div><div class="line">				</div><div class="line"></div><div class="line">				</div><div class="line">			&#125;)</div><div class="line">		&#125;,</div><div class="line">		prev:<span class="function"><span class="title">function</span></span>()&#123;</div><div class="line"></div><div class="line">		&#125;,</div><div class="line">		next:<span class="function"><span class="title">function</span></span>()&#123;</div><div class="line"></div><div class="line">		&#125;,</div><div class="line">	</div><div class="line">		lowerpageList:<span class="keyword">function</span>(total,end)&#123;</div><div class="line">			var i = end || 1;</div><div class="line"></div><div class="line">			this.pageList = [];</div><div class="line">			<span class="keyword">for</span> ( ;i &lt;= total; i++) &#123;</div><div class="line">				this.pageList.push(i)</div><div class="line">			&#125;</div><div class="line"></div><div class="line">		&#125;,</div><div class="line">		createPageElement:<span class="keyword">function</span>(pageNo)&#123;</div><div class="line">			var self = this;</div><div class="line">		</div><div class="line">				var box = document.createElement(<span class="string">'div'</span>);</div><div class="line"></div><div class="line">				<span class="keyword">for</span> (var i = 0; i &lt; self.pageList.length; i++) &#123;</div><div class="line">					var span = document.createElement(<span class="string">'span'</span>);</div><div class="line">					span.title = span.innerHTML = self.pageList[i];</div><div class="line">					</div><div class="line">					span.onclick = <span class="function"><span class="title">function</span></span>()&#123;</div><div class="line">						</div><div class="line">						var pageNo = Number(this.innerHTML);</div><div class="line">						self.currentPageNum = pageNo;</div><div class="line">						self.firstVilid(pageNo)</div><div class="line">					&#125;</div><div class="line">					<span class="keyword">if</span>(pageNo == self.pageList[i])&#123;</div><div class="line">						span.style.background = <span class="string">'red'</span>;</div><div class="line">						span.onclick = null;</div><div class="line">					&#125;</div><div class="line">					box.appendChild(span);</div><div class="line">				&#125;</div><div class="line">				this.parent.innerHTML = null;</div><div class="line">				this.parent.appendChild(box);</div><div class="line"></div><div class="line">		</div><div class="line">		&#125;,</div><div class="line">	</div><div class="line">		xhr:<span class="keyword">function</span>(data,callback)&#123;</div><div class="line">			var result = $.ajax(&#123;</div><div class="line">				url:<span class="string">'https://www.yinchengmall.com/f/loan/list.do'</span>,</div><div class="line">				<span class="built_in">type</span>:<span class="string">'post'</span>,</div><div class="line">				dataType:<span class="string">'json'</span>,</div><div class="line">				data:data,</div><div class="line">				success:<span class="keyword">function</span>(res)&#123;</div><div class="line">					res = res.body;</div><div class="line">					callback(res)</div><div class="line">				&#125;</div><div class="line">			&#125;)</div><div class="line">			console.log(result)</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	var pager = new Pager(document.querySelector(<span class="string">'#page'</span>),<span class="keyword">function</span>(data)&#123;</div><div class="line">		console.log(data)</div><div class="line">	&#125;);</div><div class="line"></div><div class="line"></div><div class="line">&lt;/script&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+
+            </div>
+
+			
+            <section class="comment">
+<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="/blog/2017/07/03/js分页设计/" data-title="js分页设计.bak" data-url="http://code-helloworld.com/blog/2017/07/03/js分页设计/"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"YOUR_DUOSHUO_SHORT_NAME"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0]
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+</section>
+        </div>
+    </div>
+</article>
+
+    <footer id="footer">
+    	<br />
+        <small>this blog power by <a href="https://hexo.io/" target="_blank">Hexo</a><br />
+        <small>&copy; 2014 parry</small>
+    </footer>
+
+    
+
+
+</body>
+</html>
+

@@ -1,0 +1,152 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    
+    <meta name="author" content="parry">
+    
+    <meta name="description" content="布局的传统解决方案，基于盒状模型，依赖 display属性 + position属性 + float属性。它对于那些特殊布局非常不方便，比如，垂直居中就不容易实现2009年，W3C提出了一种新的方案—-Flex布局，可以简便、完整、响应式地实现各种页面布局。目前，它已经得到了所有浏览器的支持，这意味">
+    
+    
+
+    
+    <link rel="alternative" href="YOUR_RSS_ADDRESS" title="parry" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/blog/favicon.png">
+    
+    
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>flex弹性布局 | parry</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="/blog/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/blog/css/style.css">
+
+    <!-- Javascript -->
+    <script src="/blog/js/jquery-2.1.0.min.js"></script>
+    
+    <script src="/blog/bootstrap/js/bootstrap.min.js"></script>
+
+    <script src="/blog/js/common.js"></script>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-inverse" role="banner">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a target="_blank" class="navbar-brand" href="http://code-helloworld.com" title="parry">parry</a>
+
+            
+            </div>
+
+            <div role="navigation" class="collapse navbar-collapse bs-navbar-collapse">
+                
+                <a id="search" href="javascript:" class="navbar-text pull-right">搜索</a>
+                <ul class="nav navbar-nav">
+                    
+                    <li id="nav-index"><a href="/blog">首页</a></li>
+                    
+                    <li id="nav-archives"><a href="/blog/archives">归档</a></li>
+                    
+                    
+                    <li><a href="https://github.com/adminparry" target="_blank">GitHub</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div style="width:100%;height:100%;background:white;display:none;">
+ 
+    </div>
+    <script>
+    var backRoot = "/blog/images/background/";
+    var backArray = [ "1.jpg", "2.jpg", "3.jpg",  ];
+        
+    $(function() {
+        // page-id...
+        var pageId = "2017/09/22/flex弹性布局/";
+        pageId = pageId.substr(0, pageId.indexOf("/"));
+        if(pageId === "") pageId = "index";
+        
+        $("#nav-" + pageId).addClass("active");
+        $('#search').click(function(){
+
+        })
+    });
+    </script>
+
+    <article class="post container">
+    <div class="well post-body first-post last-post">
+        <h1>flex弹性布局</h1>
+        
+        <div class="time-info">
+发表于:<time datetime="2017-09-22T13:03:05.848Z" itemprop="datePublished">2017-09-22</time>，更新于:<time datetime="2017-12-03T10:56:34.861Z" itemprop="dateModified">2017-12-03</time>，By <a href="http://code-helloworld.com" title="parry">parry</a>
+        </div>
+        
+        <div class="post-body-inner">
+            <div id="toc" class="toc-article well">
+                <strong class="toc-title">大纲</strong>
+                <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#行内与块"><span class="toc-number">1.</span> <span class="toc-text">行内与块</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#flex-direction子元素排列方式"><span class="toc-number">2.</span> <span class="toc-text">flex-direction子元素排列方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#flex-wrap子元素是否换行"><span class="toc-number">3.</span> <span class="toc-text">flex-wrap子元素是否换行</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#flex-flow属性是flex-direction属性和flex-wrap属性的简写形式，默认值为row-nowrap。"><span class="toc-number">4.</span> <span class="toc-text">flex-flow属性是flex-direction属性和flex-wrap属性的简写形式，默认值为row nowrap。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#justify-content子元素对齐方式"><span class="toc-number">5.</span> <span class="toc-text">justify-content子元素对齐方式</span></a></li></ol>
+            </div>
+            <div class="description">
+
+            <p>布局的传统解决方案，基于盒状模型，依赖 display属性 + position属性 + float属性。它对于那些特殊布局非常不方便，比如，垂直居中就不容易实现<br>2009年，W3C提出了一种新的方案—-Flex布局，可以简便、完整、响应式地实现各种页面布局。目前，它已经得到了所有浏览器的支持，这意味着，现在就能很安全地使用这项功能 ie10+</p>
+<h3 id="行内与块"><a href="#行内与块" class="headerlink" title="行内与块"></a>行内与块</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html&gt;</div><div class="line">&lt;head&gt;</div><div class="line">	&lt;title&gt;&lt;/title&gt;</div><div class="line">	&lt;style <span class="built_in">type</span>=<span class="string">"text/css"</span>&gt;</div><div class="line">		.flex&#123;</div><div class="line">			display: flex;</div><div class="line">		&#125;</div><div class="line">		.flex-line&#123;</div><div class="line">			display: inline-flex;</div><div class="line">		&#125;</div><div class="line">	&lt;/style&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">	&lt;div class=<span class="string">"flex"</span>&gt;flex&lt;/div&gt;</div><div class="line">	&lt;div class=<span class="string">"flex"</span>&gt;flex&lt;/div&gt;</div><div class="line">	&lt;div class=<span class="string">"flex-line"</span>&gt;flex-line&lt;/div&gt;</div><div class="line">	&lt;div class=<span class="string">"flex-line"</span>&gt;flex-line&lt;/div&gt;</div><div class="line">	</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+<p>注意，设为Flex布局以后，子元素的float、clear和vertical-align属性将失效。</p>
+<h3 id="flex-direction子元素排列方式"><a href="#flex-direction子元素排列方式" class="headerlink" title="flex-direction子元素排列方式"></a>flex-direction子元素排列方式</h3><p>row（默认值）：主轴为水平方向，起点在左端。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html&gt;</div><div class="line">&lt;head&gt;</div><div class="line">	&lt;title&gt;&lt;/title&gt;</div><div class="line">	&lt;style <span class="built_in">type</span>=<span class="string">"text/css"</span>&gt;</div><div class="line">		.flex-row&#123;</div><div class="line">			display: flex;</div><div class="line">			flex-direction: row;</div><div class="line">		&#125;</div><div class="line">		.flex-row-r&#123;</div><div class="line">			display: flex;</div><div class="line">			flex-direction: row-reverse;</div><div class="line">		&#125;</div><div class="line">		</div><div class="line">		.flex-column&#123;</div><div class="line">			display: flex;</div><div class="line">			flex-direction: column;</div><div class="line">		&#125;</div><div class="line">		.flex-column-r&#123;</div><div class="line">			display: flex;</div><div class="line">			flex-direction: column-reverse;</div><div class="line">		&#125;</div><div class="line">	&lt;/style&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">	&lt;div class=<span class="string">"flex-row"</span>&gt;</div><div class="line">		&lt;div&gt;1&lt;/div&gt;</div><div class="line">		&lt;div&gt;2&lt;/div&gt;</div><div class="line">		&lt;div&gt;3&lt;/div&gt;</div><div class="line">		&lt;div&gt;4&lt;/div&gt;</div><div class="line">	&lt;/div&gt;</div><div class="line">	&lt;div class=<span class="string">"flex-row-r"</span>&gt;</div><div class="line">		&lt;div&gt;1&lt;/div&gt;</div><div class="line">		&lt;div&gt;2&lt;/div&gt;</div><div class="line">		&lt;div&gt;3&lt;/div&gt;</div><div class="line">		&lt;div&gt;4&lt;/div&gt;</div><div class="line">	&lt;/div&gt;</div><div class="line">	&lt;div class=<span class="string">"flex-column"</span>&gt;</div><div class="line">		&lt;div&gt;1&lt;/div&gt;</div><div class="line">		&lt;div&gt;2&lt;/div&gt;</div><div class="line">		&lt;div&gt;3&lt;/div&gt;</div><div class="line">		&lt;div&gt;4&lt;/div&gt;</div><div class="line">	&lt;/div&gt;</div><div class="line">	&lt;div class=<span class="string">"flex-column-r"</span>&gt;</div><div class="line">		&lt;div&gt;1&lt;/div&gt;</div><div class="line">		&lt;div&gt;2&lt;/div&gt;</div><div class="line">		&lt;div&gt;3&lt;/div&gt;</div><div class="line">		&lt;div&gt;4&lt;/div&gt;</div><div class="line">	&lt;/div&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure></p>
+<h3 id="flex-wrap子元素是否换行"><a href="#flex-wrap子元素是否换行" class="headerlink" title="flex-wrap子元素是否换行"></a>flex-wrap子元素是否换行</h3><p>nowrap（默认）：不换行。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html&gt;</div><div class="line">&lt;head&gt;</div><div class="line">	&lt;title&gt;&lt;/title&gt;</div><div class="line">	&lt;style <span class="built_in">type</span>=<span class="string">"text/css"</span>&gt;</div><div class="line">		.flex-nowarp&#123;</div><div class="line">			display: flex;</div><div class="line">			flex-wrap: nowrap;</div><div class="line">			width: 100px;</div><div class="line"></div><div class="line">		&#125;</div><div class="line">		.flex-nowarp div&#123;</div><div class="line">			width: 50px;</div><div class="line"></div><div class="line">		&#125;</div><div class="line">		.flex-warp&#123;</div><div class="line">			display: flex;</div><div class="line">			flex-wrap: wrap;</div><div class="line">			width: 100px;</div><div class="line"></div><div class="line">		&#125;</div><div class="line">		.flex-warp div&#123;</div><div class="line">			width: 50px;</div><div class="line"></div><div class="line">		&#125;</div><div class="line">		.flex-warp-r&#123;</div><div class="line">			display: flex;</div><div class="line">			flex-wrap: wrap-reverse;</div><div class="line">			width: 100px;</div><div class="line"></div><div class="line">		&#125;</div><div class="line">		.flex-warp-r div&#123;</div><div class="line">			width: 50px;</div><div class="line"></div><div class="line">		&#125;</div><div class="line">		</div><div class="line">	&lt;/style&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">	&lt;div class=<span class="string">"flex-nowarp"</span>&gt;</div><div class="line">		&lt;div&gt;1&lt;/div&gt;</div><div class="line">		&lt;div&gt;2&lt;/div&gt;</div><div class="line">		&lt;div&gt;3&lt;/div&gt;</div><div class="line">		&lt;div&gt;4&lt;/div&gt;</div><div class="line">	&lt;/div&gt;</div><div class="line">	&lt;div class=<span class="string">"flex-warp"</span>&gt;</div><div class="line">		&lt;div&gt;1&lt;/div&gt;</div><div class="line">		&lt;div&gt;2&lt;/div&gt;</div><div class="line">		&lt;div&gt;3&lt;/div&gt;</div><div class="line">		&lt;div&gt;4&lt;/div&gt;</div><div class="line">	&lt;/div&gt;</div><div class="line">	&lt;div class=<span class="string">"flex-warp-r"</span>&gt;</div><div class="line">		&lt;div&gt;1&lt;/div&gt;</div><div class="line">		&lt;div&gt;2&lt;/div&gt;</div><div class="line">		&lt;div&gt;3&lt;/div&gt;</div><div class="line">		&lt;div&gt;4&lt;/div&gt;</div><div class="line">	&lt;/div&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure></p>
+<h3 id="flex-flow属性是flex-direction属性和flex-wrap属性的简写形式，默认值为row-nowrap。"><a href="#flex-flow属性是flex-direction属性和flex-wrap属性的简写形式，默认值为row-nowrap。" class="headerlink" title="flex-flow属性是flex-direction属性和flex-wrap属性的简写形式，默认值为row nowrap。"></a>flex-flow属性是flex-direction属性和flex-wrap属性的简写形式，默认值为row nowrap。</h3><h3 id="justify-content子元素对齐方式"><a href="#justify-content子元素对齐方式" class="headerlink" title="justify-content子元素对齐方式"></a>justify-content子元素对齐方式</h3><p>flex-start（默认值）：左对齐<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html&gt;</div><div class="line">&lt;head&gt;</div><div class="line">	&lt;title&gt;&lt;/title&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line"></div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure></p>
+
+            </div>
+
+			
+            <section class="comment">
+<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="/blog/2017/09/22/flex弹性布局/" data-title="flex弹性布局" data-url="http://code-helloworld.com/blog/2017/09/22/flex弹性布局/"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"YOUR_DUOSHUO_SHORT_NAME"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0]
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+</section>
+        </div>
+    </div>
+</article>
+
+    <footer id="footer">
+    	<br />
+        <small>this blog power by <a href="https://hexo.io/" target="_blank">Hexo</a><br />
+        <small>&copy; 2014 parry</small>
+    </footer>
+
+    
+
+
+</body>
+</html>
+

@@ -1,0 +1,151 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    
+    <meta name="author" content="parry">
+    
+    <meta name="description" content="对于目前的前端而言做的事情可能是越来越多了，以前后台做的事情现在都移到前端来做，也就是说以后的以后前端所能做的事情就越来越多了，浏览器也给前端的权限是越来越多，这无疑是个好事，人么总是从贫穷到富有的，下面就介绍几种前端导出Excel的几种方式
+利用a标签在主流的浏览器chrome Firefox等浏">
+    
+    
+
+    
+    <link rel="alternative" href="YOUR_RSS_ADDRESS" title="parry" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/blog/favicon.png">
+    
+    
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>前端导出Excel | parry</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="/blog/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/blog/css/style.css">
+
+    <!-- Javascript -->
+    <script src="/blog/js/jquery-2.1.0.min.js"></script>
+    
+    <script src="/blog/bootstrap/js/bootstrap.min.js"></script>
+
+    <script src="/blog/js/common.js"></script>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-inverse" role="banner">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a target="_blank" class="navbar-brand" href="http://code-helloworld.com" title="parry">parry</a>
+
+            
+            </div>
+
+            <div role="navigation" class="collapse navbar-collapse bs-navbar-collapse">
+                
+                <a id="search" href="javascript:" class="navbar-text pull-right">搜索</a>
+                <ul class="nav navbar-nav">
+                    
+                    <li id="nav-index"><a href="/blog">首页</a></li>
+                    
+                    <li id="nav-archives"><a href="/blog/archives">归档</a></li>
+                    
+                    
+                    <li><a href="https://github.com/adminparry" target="_blank">GitHub</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div style="width:100%;height:100%;background:white;display:none;">
+ 
+    </div>
+    <script>
+    var backRoot = "/blog/images/background/";
+    var backArray = [ "1.jpg", "2.jpg", "3.jpg",  ];
+        
+    $(function() {
+        // page-id...
+        var pageId = "2017/09/28/前端导出Excel/";
+        pageId = pageId.substr(0, pageId.indexOf("/"));
+        if(pageId === "") pageId = "index";
+        
+        $("#nav-" + pageId).addClass("active");
+        $('#search').click(function(){
+
+        })
+    });
+    </script>
+
+    <article class="post container">
+    <div class="well post-body first-post last-post">
+        <h1>前端导出Excel</h1>
+        
+        <div class="time-info">
+发表于:<time datetime="2017-09-28T14:34:55.477Z" itemprop="datePublished">2017-09-28</time>，更新于:<time datetime="2017-09-28T14:43:30.275Z" itemprop="dateModified">2017-09-28</time>，By <a href="http://code-helloworld.com" title="parry">parry</a>
+        </div>
+        
+        <div class="post-body-inner">
+            <div id="toc" class="toc-article well">
+                <strong class="toc-title">大纲</strong>
+                <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#利用a标签"><span class="toc-number">1.</span> <span class="toc-text">利用a标签</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#利用blob对象"><span class="toc-number">2.</span> <span class="toc-text">利用blob对象</span></a></li></ol>
+            </div>
+            <div class="description">
+
+            <p>对于目前的前端而言做的事情可能是越来越多了，以前后台做的事情现在都移到前端来做，也就是说以后的以后前端所能做的事情就越来越多了，浏览器也给前端的权限是越来越多，这无疑是个好事，人么总是从贫穷到富有的，下面就介绍几种前端导出Excel的几种方式</p>
+<h3 id="利用a标签"><a href="#利用a标签" class="headerlink" title="利用a标签"></a>利用a标签</h3><p>在主流的浏览器chrome Firefox等浏览器下这种方法无疑是最便捷的操作方法<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">var str = <span class="string">"博客, 域名\nBlog, 2\njb51.net, 3"</span>;</div><div class="line">var uri = <span class="string">'data:text/csv;charset=utf-8,'</span> + str;</div><div class="line">var downloadLink = document.createElement(<span class="string">"a"</span>);</div><div class="line">downloadLink.href = uri;</div><div class="line">downloadLink.download = <span class="string">"export.csv"</span>;</div><div class="line">document.body.appendChild(downloadLink);</div><div class="line">downloadLink.click();</div><div class="line">document.body.removeChild(downloadLink);</div></pre></td></tr></table></figure></p>
+<h3 id="利用blob对象"><a href="#利用blob对象" class="headerlink" title="利用blob对象"></a>利用blob对象</h3><pre><code class="bash">
+</code></pre>
+
+            </div>
+
+			
+            <section class="comment">
+<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="/blog/2017/09/28/前端导出Excel/" data-title="前端导出Excel" data-url="http://code-helloworld.com/blog/2017/09/28/前端导出Excel/"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"YOUR_DUOSHUO_SHORT_NAME"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0]
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+</section>
+        </div>
+    </div>
+</article>
+
+    <footer id="footer">
+    	<br />
+        <small>this blog power by <a href="https://hexo.io/" target="_blank">Hexo</a><br />
+        <small>&copy; 2014 parry</small>
+    </footer>
+
+    
+
+
+</body>
+</html>
+
