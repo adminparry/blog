@@ -108,31 +108,21 @@
             <div class="description">
 
             <p>在一个不熟悉JavaScript的程序员的眼中看来，知道作用域的事情，但是并不一定知道预解析的事情，作为前端开发避免不了要写JavaScript的，所以有必要了解JavaScript的细节，预解析也被叫做变量提升，在前面的函数的显式声明和隐式声明中有少许提到，今天对于这个细节做一个详细的概述</p>
-<h3 id="一个例子"><a href="#一个例子" class="headerlink" title="一个例子"></a>一个例子</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">&lt;script <span class="built_in">type</span>=<span class="string">"text/javascript"</span>&gt;</div><div class="line">	alert(a);//=&gt; undefined</div><div class="line"></div><div class="line">	var a = 9;</div><div class="line"></div><div class="line">	alert(b);//=&gt;<span class="keyword">function</span> b</div><div class="line">	alert(b());//=&gt;2</div><div class="line">	alert(a);//=&gt;9</div><div class="line"></div><div class="line">	<span class="keyword">function</span> b(a)&#123;</div><div class="line"></div><div class="line">		<span class="built_in">return</span> a = 2;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure>
-<h3 id="解析后"><a href="#解析后" class="headerlink" title="解析后"></a>解析后</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">&lt;script <span class="built_in">type</span>=<span class="string">"text/javascript"</span>&gt;</div><div class="line">	var a;</div><div class="line"></div><div class="line">	<span class="keyword">function</span> b(a)&#123;</div><div class="line">		// undefined = 2</div><div class="line">		<span class="built_in">return</span> a = 2;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	alert(a);</div><div class="line"></div><div class="line">	a = 9;</div><div class="line">	alert(b);</div><div class="line">	alert(b());</div><div class="line">	alert(a);</div><div class="line">	</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure>
+<h3 id="一个例子"><a href="#一个例子" class="headerlink" title="一个例子"></a>一个例子</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;script <span class="built_in">type</span>=<span class="string">"text/javascript"</span>&gt;</span><br><span class="line">	alert(a);//=&gt; undefined</span><br><span class="line"></span><br><span class="line">	var a = 9;</span><br><span class="line"></span><br><span class="line">	alert(b);//=&gt;<span class="keyword">function</span> b</span><br><span class="line">	alert(b());//=&gt;2</span><br><span class="line">	alert(a);//=&gt;9</span><br><span class="line"></span><br><span class="line">	<span class="keyword">function</span> b(a)&#123;</span><br><span class="line"></span><br><span class="line">		<span class="built_in">return</span> a = 2;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="解析后"><a href="#解析后" class="headerlink" title="解析后"></a>解析后</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;script <span class="built_in">type</span>=<span class="string">"text/javascript"</span>&gt;</span><br><span class="line">	var a;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">function</span> b(a)&#123;</span><br><span class="line">		// undefined = 2</span><br><span class="line">		<span class="built_in">return</span> a = 2;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	alert(a);</span><br><span class="line"></span><br><span class="line">	a = 9;</span><br><span class="line">	alert(b);</span><br><span class="line">	alert(b());</span><br><span class="line">	alert(a);</span><br><span class="line">	</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
 <h3 id="规则"><a href="#规则" class="headerlink" title="规则"></a>规则</h3><p>js解析器在运行js代码的时候 分为两步：</p>
-<p>第一步 把所有的 变量、函数、参数 提前到当前作用域的顶部。<br>第二步 逐行解读代码 从左到右、从上至下。<br>表达式：= + - * / % ++ – ! 参数 …<br>表达式 可以修改 预解析后的值<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div></pre></td></tr></table></figure></p>
+<p>第一步 把所有的 变量、函数、参数 提前到当前作用域的顶部。<br>第二步 逐行解读代码 从左到右、从上至下。<br>表达式：= + - * / % ++ – ! 参数 …<br>表达式 可以修改 预解析后的值<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure></p>
 
             </div>
 
 			
             <section class="comment">
-<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="/blog/2017/10/22/js之预解析/" data-title="js之预解析" data-url="http://code-helloworld.com/blog/2017/10/22/js之预解析/"></div>
-<!-- 多说评论框 end -->
-<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
-<script type="text/javascript">
-var duoshuoQuery = {short_name:"YOUR_DUOSHUO_SHORT_NAME"};
-	(function() {
-		var ds = document.createElement('script');
-		ds.type = 'text/javascript';ds.async = true;
-		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-		ds.charset = 'UTF-8';
-		(document.getElementsByTagName('head')[0]
-		 || document.getElementsByTagName('body')[0]).appendChild(ds);
-	})();
-	</script>
-<!-- 多说公共JS代码 end -->
+
+this is a comment
+<!-- UY BEGIN -->
+  <div id="uyan_frame"></div>
+  <script src="http://v2.uyan.cc/code/uyan.js?uid=2156610"></script>
+<!-- UY END -->
 </section>
         </div>
     </div>

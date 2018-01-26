@@ -108,7 +108,7 @@
             <div class="description">
 
             <p>对于目前的前端而言做的事情可能是越来越多了，以前后台做的事情现在都移到前端来做，也就是说以后的以后前端所能做的事情就越来越多了，浏览器也给前端的权限是越来越多，这无疑是个好事，人么总是从贫穷到富有的，下面就介绍几种前端导出Excel的几种方式</p>
-<h3 id="利用a标签"><a href="#利用a标签" class="headerlink" title="利用a标签"></a>利用a标签</h3><p>在主流的浏览器chrome Firefox等浏览器下这种方法无疑是最便捷的操作方法<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">var str = <span class="string">"博客, 域名\nBlog, 2\njb51.net, 3"</span>;</div><div class="line">var uri = <span class="string">'data:text/csv;charset=utf-8,'</span> + str;</div><div class="line">var downloadLink = document.createElement(<span class="string">"a"</span>);</div><div class="line">downloadLink.href = uri;</div><div class="line">downloadLink.download = <span class="string">"export.csv"</span>;</div><div class="line">document.body.appendChild(downloadLink);</div><div class="line">downloadLink.click();</div><div class="line">document.body.removeChild(downloadLink);</div></pre></td></tr></table></figure></p>
+<h3 id="利用a标签"><a href="#利用a标签" class="headerlink" title="利用a标签"></a>利用a标签</h3><p>在主流的浏览器chrome Firefox等浏览器下这种方法无疑是最便捷的操作方法<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">var str = <span class="string">"博客, 域名\nBlog, 2\njb51.net, 3"</span>;</span><br><span class="line">var uri = <span class="string">'data:text/csv;charset=utf-8,'</span> + str;</span><br><span class="line">var downloadLink = document.createElement(<span class="string">"a"</span>);</span><br><span class="line">downloadLink.href = uri;</span><br><span class="line">downloadLink.download = <span class="string">"export.csv"</span>;</span><br><span class="line">document.body.appendChild(downloadLink);</span><br><span class="line">downloadLink.click();</span><br><span class="line">document.body.removeChild(downloadLink);</span><br></pre></td></tr></table></figure></p>
 <h3 id="利用blob对象"><a href="#利用blob对象" class="headerlink" title="利用blob对象"></a>利用blob对象</h3><pre><code class="bash">
 </code></pre>
 
@@ -116,22 +116,12 @@
 
 			
             <section class="comment">
-<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="/blog/2017/09/28/前端导出Excel/" data-title="前端导出Excel" data-url="http://code-helloworld.com/blog/2017/09/28/前端导出Excel/"></div>
-<!-- 多说评论框 end -->
-<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
-<script type="text/javascript">
-var duoshuoQuery = {short_name:"YOUR_DUOSHUO_SHORT_NAME"};
-	(function() {
-		var ds = document.createElement('script');
-		ds.type = 'text/javascript';ds.async = true;
-		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-		ds.charset = 'UTF-8';
-		(document.getElementsByTagName('head')[0]
-		 || document.getElementsByTagName('body')[0]).appendChild(ds);
-	})();
-	</script>
-<!-- 多说公共JS代码 end -->
+
+this is a comment
+<!-- UY BEGIN -->
+  <div id="uyan_frame"></div>
+  <script src="http://v2.uyan.cc/code/uyan.js?uid=2156610"></script>
+<!-- UY END -->
 </section>
         </div>
     </div>

@@ -107,29 +107,19 @@
             <div class="description">
 
             <p>在编程语言理论中，惰性求值（英语：Lazy Evaluation），又译为惰性计算、懒惰求值，也称为传需求调用（call-by-need），是一个计算机编程中的一个概念，它的目的是要最小化计算机要做的工作。表达式不在它被绑定到变量之后就立即求值，而是在该值被取用的时候求值，也就是说，语句如x:=expression; (把一个表达式的结果赋值给一个变量)明显的调用这个表达式被计算并把结果放置到x中，但是先不管实际在x中的是什么，直到通过后面的表达式中到x的引用而有了对它的值的需求的时候，而后面表达式自身的求值也可以被延迟，最终为了生成让外界看到的某个符号而计算这个快速增长的依赖树。</p>
-<h2 id="惰性求值的好处"><a href="#惰性求值的好处" class="headerlink" title="惰性求值的好处"></a>惰性求值的好处</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">function</span> mod (a,b)&#123;</div><div class="line">	<span class="keyword">if</span>(b==1) <span class="built_in">return</span> 0;</div><div class="line">	<span class="keyword">else</span> <span class="built_in">return</span> a % b ;</div><div class="line">&#125;</div><div class="line"></div><div class="line">mod((1+3)*2,1)  // 0</div></pre></td></tr></table></figure>
+<h2 id="惰性求值的好处"><a href="#惰性求值的好处" class="headerlink" title="惰性求值的好处"></a>惰性求值的好处</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> mod (a,b)&#123;</span><br><span class="line">	<span class="keyword">if</span>(b==1) <span class="built_in">return</span> 0;</span><br><span class="line">	<span class="keyword">else</span> <span class="built_in">return</span> a % b ;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">mod((1+3)*2,1)  // 0</span><br></pre></td></tr></table></figure>
 <p>可以看到由于 b 是 1，所以我们并不会用到 a 的值，但是依然计算了表达式(1+3)*2，这里的计算就是浪费的。惰性求值则能避免这一情况。</p>
 
             </div>
 
 			
             <section class="comment">
-<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="/blog/2017/07/14/js之惰性求值/" data-title="js之惰性求值" data-url="http://code-helloworld.com/blog/2017/07/14/js之惰性求值/"></div>
-<!-- 多说评论框 end -->
-<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
-<script type="text/javascript">
-var duoshuoQuery = {short_name:"YOUR_DUOSHUO_SHORT_NAME"};
-	(function() {
-		var ds = document.createElement('script');
-		ds.type = 'text/javascript';ds.async = true;
-		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-		ds.charset = 'UTF-8';
-		(document.getElementsByTagName('head')[0]
-		 || document.getElementsByTagName('body')[0]).appendChild(ds);
-	})();
-	</script>
-<!-- 多说公共JS代码 end -->
+
+this is a comment
+<!-- UY BEGIN -->
+  <div id="uyan_frame"></div>
+  <script src="http://v2.uyan.cc/code/uyan.js?uid=2156610"></script>
+<!-- UY END -->
 </section>
         </div>
     </div>

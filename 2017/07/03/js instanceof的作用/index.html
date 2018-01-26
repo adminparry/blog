@@ -108,29 +108,19 @@
             <div class="description">
 
             <p>instanceof 是js中的操作符，instance翻译成中文的意思是实例，of在英文中通常都是指所属，那作者的初衷是实例的所属者，<br>例如：1 instanceof Number 为false ；而new Number(1) instanceof Number 为true</p>
-<h2 id="快速开始"><a href="#快速开始" class="headerlink" title="快速开始"></a>快速开始</h2><h3 id="instanceof"><a href="#instanceof" class="headerlink" title="instanceof"></a>instanceof</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">function</span> instance(obj, constructor)&#123;</div><div class="line">	// 这里的判断条件就不写了</div><div class="line">	// ...</div><div class="line">	var proto = obj.__proto__;</div><div class="line">	</div><div class="line">	<span class="keyword">while</span>(proto)&#123;</div><div class="line">		<span class="keyword">if</span>(proto == constructor.prototype)&#123;</div><div class="line">			<span class="built_in">return</span> <span class="literal">true</span>;</div><div class="line">		&#125;</div><div class="line">		proto = proto.__proto__;</div><div class="line">	&#125;</div><div class="line">	<span class="built_in">return</span> <span class="literal">false</span>;</div><div class="line">&#125;</div><div class="line">&lt;!-- 写个测试用例 --&gt;</div><div class="line">console.log(instance(new Array,Function))//<span class="literal">false</span></div><div class="line">console.log(new Array instanceof Function)//<span class="literal">false</span></div></pre></td></tr></table></figure>
+<h2 id="快速开始"><a href="#快速开始" class="headerlink" title="快速开始"></a>快速开始</h2><h3 id="instanceof"><a href="#instanceof" class="headerlink" title="instanceof"></a>instanceof</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> instance(obj, constructor)&#123;</span><br><span class="line">	// 这里的判断条件就不写了</span><br><span class="line">	// ...</span><br><span class="line">	var proto = obj.__proto__;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">while</span>(proto)&#123;</span><br><span class="line">		<span class="keyword">if</span>(proto == constructor.prototype)&#123;</span><br><span class="line">			<span class="built_in">return</span> <span class="literal">true</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		proto = proto.__proto__;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br><span class="line">&lt;!-- 写个测试用例 --&gt;</span><br><span class="line">console.log(instance(new Array,Function))//<span class="literal">false</span></span><br><span class="line">console.log(new Array instanceof Function)//<span class="literal">false</span></span><br></pre></td></tr></table></figure>
 <p>实际上来说instanceof就是查找原型，找到返回true找不到返回false，<br>在这里需要说的是instanceof前面要是个对象后面要是个构造函数，不然就会报错</p>
 
             </div>
 
 			
             <section class="comment">
-<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="/blog/2017/07/03/js instanceof的作用/" data-title="js中instanceof的作用" data-url="http://code-helloworld.com/blog/2017/07/03/js instanceof的作用/"></div>
-<!-- 多说评论框 end -->
-<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
-<script type="text/javascript">
-var duoshuoQuery = {short_name:"YOUR_DUOSHUO_SHORT_NAME"};
-	(function() {
-		var ds = document.createElement('script');
-		ds.type = 'text/javascript';ds.async = true;
-		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-		ds.charset = 'UTF-8';
-		(document.getElementsByTagName('head')[0]
-		 || document.getElementsByTagName('body')[0]).appendChild(ds);
-	})();
-	</script>
-<!-- 多说公共JS代码 end -->
+
+this is a comment
+<!-- UY BEGIN -->
+  <div id="uyan_frame"></div>
+  <script src="http://v2.uyan.cc/code/uyan.js?uid=2156610"></script>
+<!-- UY END -->
 </section>
         </div>
     </div>

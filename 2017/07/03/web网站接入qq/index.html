@@ -108,30 +108,20 @@
             </div>
             <div class="description">
 
-            <p>对于大多数网站来说使用较为广泛的人工客服或者在线沟通类的东西都用到qq互联，既方便又不收费<br><a href="https://connect.qq.com/" target="_blank" rel="external">官方网址qq互联</a></p>
+            <p>对于大多数网站来说使用较为广泛的人工客服或者在线沟通类的东西都用到qq互联，既方便又不收费<br><a href="https://connect.qq.com/" target="_blank" rel="noopener">官方网址qq互联</a></p>
 <p>申请好自己的APPID</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html lang=<span class="string">"en"</span>&gt;</div><div class="line">&lt;head&gt;</div><div class="line">	&lt;meta charset=<span class="string">"UTF-8"</span>&gt;</div><div class="line">	&lt;title&gt;Document&lt;/title&gt;</div><div class="line">	&lt;style&gt;</div><div class="line">	</div><div class="line">	&lt;/style&gt;</div><div class="line">	&lt;script charset=<span class="string">"utf-8"</span> <span class="built_in">type</span>=<span class="string">"text/javascript"</span> src=<span class="string">"http://wpa.b.qq.com/cgi/wpa.php?key=这里是APPID"</span>&gt;&lt;/script&gt;</div><div class="line">&lt;/head&gt;</div><div class="line"></div><div class="line">&lt;body&gt;</div><div class="line">		</div><div class="line">	 &lt;button id=<span class="string">"qq"</span>&gt;qq&lt;/button&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;script&gt;</div><div class="line">	window.qq.onclick = <span class="function"><span class="title">function</span></span> () &#123;</div><div class="line">        var btn = document.getElementsByTagName(<span class="string">"head"</span>)[0].getElementsByTagName(<span class="string">"iframe"</span>)[0].contentWindow.document.getElementById(<span class="string">"launchBtn"</span>);</div><div class="line">        <span class="keyword">if</span> (btn.click) &#123;</div><div class="line">            btn.click();</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            var e = document.createEvent(<span class="string">'MouseEvent'</span>);</div><div class="line">            e.initEvent(<span class="string">'click'</span>, <span class="literal">true</span>, <span class="literal">true</span>);</div><div class="line">            btn.dispatchEvent(e);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">            	</div><div class="line">&lt;/script&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=<span class="string">"en"</span>&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">	&lt;meta charset=<span class="string">"UTF-8"</span>&gt;</span><br><span class="line">	&lt;title&gt;Document&lt;/title&gt;</span><br><span class="line">	&lt;style&gt;</span><br><span class="line">	</span><br><span class="line">	&lt;/style&gt;</span><br><span class="line">	&lt;script charset=<span class="string">"utf-8"</span> <span class="built_in">type</span>=<span class="string">"text/javascript"</span> src=<span class="string">"http://wpa.b.qq.com/cgi/wpa.php?key=这里是APPID"</span>&gt;&lt;/script&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line">		</span><br><span class="line">	 &lt;button id=<span class="string">"qq"</span>&gt;qq&lt;/button&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">	window.qq.onclick = <span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">        var btn = document.getElementsByTagName(<span class="string">"head"</span>)[0].getElementsByTagName(<span class="string">"iframe"</span>)[0].contentWindow.document.getElementById(<span class="string">"launchBtn"</span>);</span><br><span class="line">        <span class="keyword">if</span> (btn.click) &#123;</span><br><span class="line">            btn.click();</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            var e = document.createEvent(<span class="string">'MouseEvent'</span>);</span><br><span class="line">            e.initEvent(<span class="string">'click'</span>, <span class="literal">true</span>, <span class="literal">true</span>);</span><br><span class="line">            btn.dispatchEvent(e);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">            	</span><br><span class="line">&lt;/script&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
 
             </div>
 
 			
             <section class="comment">
-<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="/blog/2017/07/03/web网站接入qq/" data-title="web网站接入qq" data-url="http://code-helloworld.com/blog/2017/07/03/web网站接入qq/"></div>
-<!-- 多说评论框 end -->
-<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
-<script type="text/javascript">
-var duoshuoQuery = {short_name:"YOUR_DUOSHUO_SHORT_NAME"};
-	(function() {
-		var ds = document.createElement('script');
-		ds.type = 'text/javascript';ds.async = true;
-		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-		ds.charset = 'UTF-8';
-		(document.getElementsByTagName('head')[0]
-		 || document.getElementsByTagName('body')[0]).appendChild(ds);
-	})();
-	</script>
-<!-- 多说公共JS代码 end -->
+
+this is a comment
+<!-- UY BEGIN -->
+  <div id="uyan_frame"></div>
+  <script src="http://v2.uyan.cc/code/uyan.js?uid=2156610"></script>
+<!-- UY END -->
 </section>
         </div>
     </div>

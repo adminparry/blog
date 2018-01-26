@@ -109,34 +109,24 @@
             <div class="description">
 
             <p>mysql作为免费开源的持久层是非常优秀的一款关系型数据库,其内置的视图 存储过程 事务处理 等都非常的高效以及方便 深受广大开发者的青睐 </p>
-<h2 id="查询所有的库名称"><a href="#查询所有的库名称" class="headerlink" title="查询所有的库名称"></a>查询所有的库名称</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">SELECT `SCHEMA_NAME` FROM `information_schema`.`SCHEMATA`</div></pre></td></tr></table></figure>
-<h2 id="查询所有的表名称"><a href="#查询所有的表名称" class="headerlink" title="查询所有的表名称"></a>查询所有的表名称</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">select table_name from information_schema.tables <span class="built_in">where</span> table_schema=<span class="string">'库名'</span> and table_type=<span class="string">'base table'</span></div></pre></td></tr></table></figure>
-<h2 id="查询指定表所有的字段"><a href="#查询指定表所有的字段" class="headerlink" title="查询指定表所有的字段"></a>查询指定表所有的字段</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">select column_name from information_schema.columns <span class="built_in">where</span> table_schema=<span class="string">'库名'</span> and table_name=<span class="string">'表名'</span></div></pre></td></tr></table></figure>
-<h2 id="简单查询"><a href="#简单查询" class="headerlink" title="简单查询"></a>简单查询</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">SELECT 列名称 FROM 表名称</div><div class="line">SELECT * FROM 表名称</div><div class="line">-- example：</div><div class="line">-- SELECT LastName,FirstName FROM Persons</div><div class="line">-- SELECT * FROM Persons</div><div class="line">-- 相应的key 相应的value</div></pre></td></tr></table></figure>
-<h2 id="简单修改"><a href="#简单修改" class="headerlink" title="简单修改"></a>简单修改</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">update 表名 <span class="built_in">set</span> name = <span class="string">'ddd'</span> <span class="built_in">where</span> （条件） id_p=<span class="string">'3'</span> </div><div class="line"></div><div class="line">相应的key 相应的value</div></pre></td></tr></table></figure>
-<h2 id="简单删除"><a href="#简单删除" class="headerlink" title="简单删除"></a>简单删除</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">delete from 表名 <span class="built_in">where</span> （条件）name=‘3’</div><div class="line"></div><div class="line">name字段为3的整行删除</div></pre></td></tr></table></figure>
-<h2 id="简单插入"><a href="#简单插入" class="headerlink" title="简单插入"></a>简单插入</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">insert into 表名 (Id_P,date,name,proto,age,live) values (<span class="string">'5'</span>,<span class="string">'2014_10'</span>,<span class="string">''</span>,<span class="string">'2'</span>,<span class="string">'2+'</span>,<span class="string">'1'</span>);</div><div class="line"></div><div class="line">相应的key 相应的value</div></pre></td></tr></table></figure>
+<h2 id="查询所有的库名称"><a href="#查询所有的库名称" class="headerlink" title="查询所有的库名称"></a>查询所有的库名称</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT `SCHEMA_NAME` FROM `information_schema`.`SCHEMATA`</span><br></pre></td></tr></table></figure>
+<h2 id="查询所有的表名称"><a href="#查询所有的表名称" class="headerlink" title="查询所有的表名称"></a>查询所有的表名称</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select table_name from information_schema.tables <span class="built_in">where</span> table_schema=<span class="string">'库名'</span> and table_type=<span class="string">'base table'</span></span><br></pre></td></tr></table></figure>
+<h2 id="查询指定表所有的字段"><a href="#查询指定表所有的字段" class="headerlink" title="查询指定表所有的字段"></a>查询指定表所有的字段</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select column_name from information_schema.columns <span class="built_in">where</span> table_schema=<span class="string">'库名'</span> and table_name=<span class="string">'表名'</span></span><br></pre></td></tr></table></figure>
+<h2 id="简单查询"><a href="#简单查询" class="headerlink" title="简单查询"></a>简单查询</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">SELECT 列名称 FROM 表名称</span><br><span class="line">SELECT * FROM 表名称</span><br><span class="line">-- example：</span><br><span class="line">-- SELECT LastName,FirstName FROM Persons</span><br><span class="line">-- SELECT * FROM Persons</span><br><span class="line">-- 相应的key 相应的value</span><br></pre></td></tr></table></figure>
+<h2 id="简单修改"><a href="#简单修改" class="headerlink" title="简单修改"></a>简单修改</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">update 表名 <span class="built_in">set</span> name = <span class="string">'ddd'</span> <span class="built_in">where</span> （条件） id_p=<span class="string">'3'</span> </span><br><span class="line"></span><br><span class="line">相应的key 相应的value</span><br></pre></td></tr></table></figure>
+<h2 id="简单删除"><a href="#简单删除" class="headerlink" title="简单删除"></a>简单删除</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">delete from 表名 <span class="built_in">where</span> （条件）name=‘3’</span><br><span class="line"></span><br><span class="line">name字段为3的整行删除</span><br></pre></td></tr></table></figure>
+<h2 id="简单插入"><a href="#简单插入" class="headerlink" title="简单插入"></a>简单插入</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">insert into 表名 (Id_P,date,name,proto,age,live) values (<span class="string">'5'</span>,<span class="string">'2014_10'</span>,<span class="string">''</span>,<span class="string">'2'</span>,<span class="string">'2+'</span>,<span class="string">'1'</span>);</span><br><span class="line"></span><br><span class="line">相应的key 相应的value</span><br></pre></td></tr></table></figure>
 
             </div>
 
 			
             <section class="comment">
-<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="/blog/2017/07/03/mysql通用查询/" data-title="mysql通用查询" data-url="http://code-helloworld.com/blog/2017/07/03/mysql通用查询/"></div>
-<!-- 多说评论框 end -->
-<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
-<script type="text/javascript">
-var duoshuoQuery = {short_name:"YOUR_DUOSHUO_SHORT_NAME"};
-	(function() {
-		var ds = document.createElement('script');
-		ds.type = 'text/javascript';ds.async = true;
-		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-		ds.charset = 'UTF-8';
-		(document.getElementsByTagName('head')[0]
-		 || document.getElementsByTagName('body')[0]).appendChild(ds);
-	})();
-	</script>
-<!-- 多说公共JS代码 end -->
+
+this is a comment
+<!-- UY BEGIN -->
+  <div id="uyan_frame"></div>
+  <script src="http://v2.uyan.cc/code/uyan.js?uid=2156610"></script>
+<!-- UY END -->
 </section>
         </div>
     </div>

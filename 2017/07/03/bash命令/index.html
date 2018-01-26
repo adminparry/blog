@@ -108,16 +108,16 @@
             <div class="description">
 
             <p>主流的操作系统有windows mac linux 当然mac属于红帽的一个封装的版本说是属于Linux也行，当然这些都不重要了，windows下的命令工具叫做dos Linux下的命令行工具叫做bash，dos在这里就不多说了，说说bash</p>
-<h3 id="隐藏Mac隐藏文件的命令"><a href="#隐藏Mac隐藏文件的命令" class="headerlink" title="隐藏Mac隐藏文件的命令"></a>隐藏Mac隐藏文件的命令</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ defaults write com.apple.finder AppleShowAllFiles -bool <span class="literal">false</span></div></pre></td></tr></table></figure>
-<h3 id="显示Mac隐藏文件的命令"><a href="#显示Mac隐藏文件的命令" class="headerlink" title="显示Mac隐藏文件的命令"></a>显示Mac隐藏文件的命令</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ defaults write com.apple.finder AppleShowAllFiles -bool <span class="literal">true</span></div></pre></td></tr></table></figure>
-<h3 id="查询端口的pid然后结束进程"><a href="#查询端口的pid然后结束进程" class="headerlink" title="查询端口的pid然后结束进程"></a>查询端口的pid然后结束进程</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ lsof -i:端口号(8080)</div></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">kill</span> -9 pid号</div><div class="line"></div><div class="line">``` </div><div class="line"></div><div class="line"><span class="comment">### 查看工具的进程号</span></div><div class="line"></div><div class="line">``` bash</div><div class="line">$ ps -ef | grep 工具名(例如nginx)</div></pre></td></tr></table></figure>
-<h3 id="查看读写权限"><a href="#查看读写权限" class="headerlink" title="查看读写权限"></a>查看读写权限</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ ls -l</div></pre></td></tr></table></figure>
-<h3 id="复制文件"><a href="#复制文件" class="headerlink" title="复制文件"></a>复制文件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ cp 路径 ‘目标路径’</div></pre></td></tr></table></figure>
-<h3 id="创建一个空文件夹"><a href="#创建一个空文件夹" class="headerlink" title="创建一个空文件夹"></a>创建一个空文件夹</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ mkdir ‘name’</div></pre></td></tr></table></figure>
-<h3 id="删除一个空文件夹"><a href="#删除一个空文件夹" class="headerlink" title="删除一个空文件夹"></a>删除一个空文件夹</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ rmdir <span class="string">'name'</span></div></pre></td></tr></table></figure>
-<h3 id="删除文件夹下的所有文件"><a href="#删除文件夹下的所有文件" class="headerlink" title="删除文件夹下的所有文件"></a>删除文件夹下的所有文件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ rm -rf ‘文件夹名字’</div></pre></td></tr></table></figure>
-<h3 id="新建一个文件"><a href="#新建一个文件" class="headerlink" title="新建一个文件"></a>新建一个文件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ touch <span class="string">'文件名字'</span></div></pre></td></tr></table></figure>
+<h3 id="隐藏Mac隐藏文件的命令"><a href="#隐藏Mac隐藏文件的命令" class="headerlink" title="隐藏Mac隐藏文件的命令"></a>隐藏Mac隐藏文件的命令</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ defaults write com.apple.finder AppleShowAllFiles -bool <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+<h3 id="显示Mac隐藏文件的命令"><a href="#显示Mac隐藏文件的命令" class="headerlink" title="显示Mac隐藏文件的命令"></a>显示Mac隐藏文件的命令</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ defaults write com.apple.finder AppleShowAllFiles -bool <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+<h3 id="查询端口的pid然后结束进程"><a href="#查询端口的pid然后结束进程" class="headerlink" title="查询端口的pid然后结束进程"></a>查询端口的pid然后结束进程</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ lsof -i:端口号(8080)</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">kill</span> -9 pid号</span><br><span class="line"></span><br><span class="line">``` </span><br><span class="line"></span><br><span class="line"><span class="comment">### 查看工具的进程号</span></span><br><span class="line"></span><br><span class="line">``` bash</span><br><span class="line">$ ps -ef | grep 工具名(例如nginx)</span><br></pre></td></tr></table></figure>
+<h3 id="查看读写权限"><a href="#查看读写权限" class="headerlink" title="查看读写权限"></a>查看读写权限</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ls -l</span><br></pre></td></tr></table></figure>
+<h3 id="复制文件"><a href="#复制文件" class="headerlink" title="复制文件"></a>复制文件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ cp 路径 ‘目标路径’</span><br></pre></td></tr></table></figure>
+<h3 id="创建一个空文件夹"><a href="#创建一个空文件夹" class="headerlink" title="创建一个空文件夹"></a>创建一个空文件夹</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ mkdir ‘name’</span><br></pre></td></tr></table></figure>
+<h3 id="删除一个空文件夹"><a href="#删除一个空文件夹" class="headerlink" title="删除一个空文件夹"></a>删除一个空文件夹</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ rmdir <span class="string">'name'</span></span><br></pre></td></tr></table></figure>
+<h3 id="删除文件夹下的所有文件"><a href="#删除文件夹下的所有文件" class="headerlink" title="删除文件夹下的所有文件"></a>删除文件夹下的所有文件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ rm -rf ‘文件夹名字’</span><br></pre></td></tr></table></figure>
+<h3 id="新建一个文件"><a href="#新建一个文件" class="headerlink" title="新建一个文件"></a>新建一个文件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ touch <span class="string">'文件名字'</span></span><br></pre></td></tr></table></figure>
 <p>mac 与 liux bash的区别<br>tar<br>解包：tar xvf FileName.tar<br>打包：tar cvf FileName.tar DirName<br>（注：tar是打包，不是压缩！）<br>———————————————<br>.gz<br>解压1：gunzip FileName.gz<br>解压2：gzip -d FileName.gz<br>压缩：gzip FileName</p>
 <p>.tar.gz 和 .tgz<br>解压：tar zxvf FileName.tar.gz<br>压缩：tar zcvf FileName.tar.gz DirName<br>———————————————</p>
 <p>　tar –xvf file.tar //解压 tar包<br>　unzip file.zip //解压zip</p>
@@ -126,22 +126,12 @@
 
 			
             <section class="comment">
-<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="/blog/2017/07/03/bash命令/" data-title="bash命令" data-url="http://code-helloworld.com/blog/2017/07/03/bash命令/"></div>
-<!-- 多说评论框 end -->
-<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
-<script type="text/javascript">
-var duoshuoQuery = {short_name:"YOUR_DUOSHUO_SHORT_NAME"};
-	(function() {
-		var ds = document.createElement('script');
-		ds.type = 'text/javascript';ds.async = true;
-		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-		ds.charset = 'UTF-8';
-		(document.getElementsByTagName('head')[0]
-		 || document.getElementsByTagName('body')[0]).appendChild(ds);
-	})();
-	</script>
-<!-- 多说公共JS代码 end -->
+
+this is a comment
+<!-- UY BEGIN -->
+  <div id="uyan_frame"></div>
+  <script src="http://v2.uyan.cc/code/uyan.js?uid=2156610"></script>
+<!-- UY END -->
 </section>
         </div>
     </div>

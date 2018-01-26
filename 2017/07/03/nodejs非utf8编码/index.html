@@ -108,29 +108,19 @@
             <div class="description">
 
             <p>Unicode是国际组织制定的可以容纳世界上所有文字和符号的字符编码方案，而你接触过的编码实际上都是基于Unicode的一种实现方式，至于为什么要有别的实现方式只是感觉浪费而已，还有一个有意思的事就是Node.JS不支持的字符编码，如GBK，BIG5</p>
-<h3 id="当nodejs遇见gbk"><a href="#当nodejs遇见gbk" class="headerlink" title="当nodejs遇见gbk"></a>当nodejs遇见gbk</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">var http = require(<span class="string">"http"</span>);</div><div class="line">var iconv = require(<span class="string">"iconv-lite"</span>);</div><div class="line">var url = <span class="string">"http://hq.sinajs.cn/etag.php?_=1480057172274list=sh600153"</span>;</div><div class="line"></div><div class="line">http.request(url, <span class="keyword">function</span>(res)&#123;</div><div class="line">	    res.on(<span class="string">'data'</span>,<span class="keyword">function</span>(data)&#123;</div><div class="line">	        data = iconv.decode(data, <span class="string">'GBK'</span>);</div><div class="line">	        console.log(data)</div><div class="line">	        </div><div class="line">	    &#125;);</div><div class="line">	  </div><div class="line">	&#125;).end();</div></pre></td></tr></table></figure>
-<p>当nodejs遇见gbk无非就是个乱码而已，当然生活是艰难的，但还是要生活的，<br>一个包包iconv-lite来处理这个乱码，话说包治百病，如果爱请深爱，有兴趣的话打开包看一下，像这种转化应该没有什么算法规律可言的，最暴力的方法就是像密码表一样做映。<br>人家写的专业<a href="http://nodejs.lofter.com/post/3c14e_48aee" target="_blank" rel="external">http://nodejs.lofter.com/post/3c14e_48aee</a></p>
+<h3 id="当nodejs遇见gbk"><a href="#当nodejs遇见gbk" class="headerlink" title="当nodejs遇见gbk"></a>当nodejs遇见gbk</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">var http = require(<span class="string">"http"</span>);</span><br><span class="line">var iconv = require(<span class="string">"iconv-lite"</span>);</span><br><span class="line">var url = <span class="string">"http://hq.sinajs.cn/etag.php?_=1480057172274list=sh600153"</span>;</span><br><span class="line"></span><br><span class="line">http.request(url, <span class="keyword">function</span>(res)&#123;</span><br><span class="line">	    res.on(<span class="string">'data'</span>,<span class="keyword">function</span>(data)&#123;</span><br><span class="line">	        data = iconv.decode(data, <span class="string">'GBK'</span>);</span><br><span class="line">	        console.log(data)</span><br><span class="line">	        </span><br><span class="line">	    &#125;);</span><br><span class="line">	  </span><br><span class="line">	&#125;).end();</span><br></pre></td></tr></table></figure>
+<p>当nodejs遇见gbk无非就是个乱码而已，当然生活是艰难的，但还是要生活的，<br>一个包包iconv-lite来处理这个乱码，话说包治百病，如果爱请深爱，有兴趣的话打开包看一下，像这种转化应该没有什么算法规律可言的，最暴力的方法就是像密码表一样做映。<br>人家写的专业<a href="http://nodejs.lofter.com/post/3c14e_48aee" target="_blank" rel="noopener">http://nodejs.lofter.com/post/3c14e_48aee</a></p>
 
             </div>
 
 			
             <section class="comment">
-<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="/blog/2017/07/03/nodejs非utf8编码/" data-title="非utf8编码" data-url="http://code-helloworld.com/blog/2017/07/03/nodejs非utf8编码/"></div>
-<!-- 多说评论框 end -->
-<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
-<script type="text/javascript">
-var duoshuoQuery = {short_name:"YOUR_DUOSHUO_SHORT_NAME"};
-	(function() {
-		var ds = document.createElement('script');
-		ds.type = 'text/javascript';ds.async = true;
-		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-		ds.charset = 'UTF-8';
-		(document.getElementsByTagName('head')[0]
-		 || document.getElementsByTagName('body')[0]).appendChild(ds);
-	})();
-	</script>
-<!-- 多说公共JS代码 end -->
+
+this is a comment
+<!-- UY BEGIN -->
+  <div id="uyan_frame"></div>
+  <script src="http://v2.uyan.cc/code/uyan.js?uid=2156610"></script>
+<!-- UY END -->
 </section>
         </div>
     </div>

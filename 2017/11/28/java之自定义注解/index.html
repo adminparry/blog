@@ -107,7 +107,7 @@
             <div class="description">
 
             <p>注解本质是一个继承了Annotation的特殊接口，其具体实现类是Java运行时生成的动态代理类。而我们通过反射获取注解时，返回的是Java运行时生成的动态代理对象$Proxy1。通过代理对象调用自定义注解（接口）的方法，会最终调用AnnotationInvocationHandler的invoke方法。该方法会从memberValues这个Map中索引出对应的值。而memberValues的来源是Java常量池。</p>
-<p><a href="https://baike.baidu.com/item/%E6%B3%A8%E8%A7%A3/885706?fr=aladdin#3" target="_blank" rel="external">https://baike.baidu.com/item/%E6%B3%A8%E8%A7%A3/885706?fr=aladdin#3</a></p>
+<p><a href="https://baike.baidu.com/item/%E6%B3%A8%E8%A7%A3/885706?fr=aladdin#3" target="_blank" rel="noopener">https://baike.baidu.com/item/%E6%B3%A8%E8%A7%A3/885706?fr=aladdin#3</a></p>
 <h3 id="Retention"><a href="#Retention" class="headerlink" title="Retention"></a>Retention</h3><p>@Retention– 定义该注解的生命周期<br>  ●   RetentionPolicy.SOURCE : 在编译阶段丢弃。这些注解在编译结束之后就不再有任何意义，所以它们不会写入字节码。@Override, @SuppressWarnings都属于这类注解。<br>  ●   RetentionPolicy.CLASS : 在类加载的时候丢弃。在字节码文件的处理中有用。注解默认使用这种方式<br>  ●   RetentionPolicy.RUNTIME : 始终不会丢弃，运行期也保留该注解，因此可以使用反射机制读取该注解的信息。我们自定义的注解通常使用这种方式。</p>
 <h3 id="Target"><a href="#Target" class="headerlink" title="Target"></a>Target</h3><p>@Target – 表示该注解用于什么地方。默认值为任何元素，表示该注解用于什么地方。可用的ElementType参数包括<br>  ● ElementType.CONSTRUCTOR:用于描述构造器<br>  ● ElementType.FIELD:成员变量、对象、属性（包括enum实例）<br>  ● ElementType.LOCAL_VARIABLE:用于描述局部变量<br>  ● ElementType.METHOD:用于描述方法<br>  ● ElementType.PACKAGE:用于描述包<br>  ● ElementType.PARAMETER:用于描述参数<br>  ● ElementType.TYPE:用于描述类、接口(包括注解类型) 或enum声明</p>
 <h3 id="Documented"><a href="#Documented" class="headerlink" title="Documented"></a>Documented</h3><p>@Documented–一个简单的Annotations标记注解，表示是否将注解信息添加在java文档中。</p>
@@ -117,22 +117,12 @@
 
 			
             <section class="comment">
-<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="/blog/2017/11/28/java之自定义注解/" data-title="java之自定义注解" data-url="http://code-helloworld.com/blog/2017/11/28/java之自定义注解/"></div>
-<!-- 多说评论框 end -->
-<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
-<script type="text/javascript">
-var duoshuoQuery = {short_name:"YOUR_DUOSHUO_SHORT_NAME"};
-	(function() {
-		var ds = document.createElement('script');
-		ds.type = 'text/javascript';ds.async = true;
-		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-		ds.charset = 'UTF-8';
-		(document.getElementsByTagName('head')[0]
-		 || document.getElementsByTagName('body')[0]).appendChild(ds);
-	})();
-	</script>
-<!-- 多说公共JS代码 end -->
+
+this is a comment
+<!-- UY BEGIN -->
+  <div id="uyan_frame"></div>
+  <script src="http://v2.uyan.cc/code/uyan.js?uid=2156610"></script>
+<!-- UY END -->
 </section>
         </div>
     </div>
