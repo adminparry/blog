@@ -1,0 +1,170 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    
+    
+    <meta name="author" content="parry">
+    
+    <meta name="description" content="真真假假假假真真，我们都知道true代表真，false代表假，为程序流程控制起到重要的意义但是在隐式转化的情况下true代表的是1，false代表的是0，下面我们就来看一看
+什么是隐式转化1234567891011121314&amp;lt;!-- ==是比较运算符的一种 其功能就是转化为同类型进行比较 -">
+    
+    
+
+    
+    <link rel="alternative" href="YOUR_RSS_ADDRESS" title="parry" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/blog/favicon.png">
+    
+    
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>js中的真与假及隐式转化 | parry</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="/blog/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/blog/css/style.css">
+
+    <!-- Javascript -->
+    <script src="/blog/js/jquery-2.1.0.min.js"></script>
+    
+    <script src="/blog/bootstrap/js/bootstrap.min.js"></script>
+
+    <script src="/blog/js/common.js"></script>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-inverse" role="banner">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a target="_blank" class="navbar-brand" href="http://code-helloworld.com" title="parry">parry</a>
+
+            
+            </div>
+
+            <div role="navigation" class="collapse navbar-collapse bs-navbar-collapse">
+                
+                <a id="search" href="javascript:" class="navbar-text pull-right">搜索</a>
+                <ul class="nav navbar-nav">
+                    
+                    <li id="nav-index"><a href="/blog">首页</a></li>
+                    
+                    <li id="nav-archives"><a href="/blog/archives">归档</a></li>
+                    
+                    
+                    <li><a href="https://github.com/adminparry" target="_blank">GitHub</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div style="width:100%;height:100%;background:white;display:none;">
+ 
+    </div>
+    <script>
+    var backRoot = "/blog/images/background/";
+    var backArray = [ "1.jpg", "2.jpg", "3.jpg",  ];
+        
+    $(function() {
+        // page-id...
+        var pageId = "2017/07/03/js中的真与假/";
+        pageId = pageId.substr(0, pageId.indexOf("/"));
+        if(pageId === "") pageId = "index";
+        
+        $("#nav-" + pageId).addClass("active");
+        $('#search').click(function(){
+
+        })
+    });
+    </script>
+
+    <article class="post container">
+    <div class="well post-body first-post last-post">
+        <h1>js中的真与假及隐式转化</h1>
+        
+        <div class="time-info">
+发表于:<time datetime="2017-07-03T08:38:08.556Z" itemprop="datePublished">2017-07-03</time>，更新于:<time datetime="2017-10-21T05:44:56.661Z" itemprop="dateModified">2017-10-21</time>，By <a href="http://code-helloworld.com" title="parry">parry</a>
+        </div>
+        
+        <div class="post-body-inner">
+            <div id="toc" class="toc-article well">
+                <strong class="toc-title">大纲</strong>
+                <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#什么是隐式转化"><span class="toc-number">1.</span> <span class="toc-text">什么是隐式转化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#真与假"><span class="toc-number">2.</span> <span class="toc-text">真与假</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#比较运算符中"><span class="toc-number">3.</span> <span class="toc-text">比较运算符中</span></a></li></ol>
+            </div>
+            <div class="description">
+
+            <p>真真假假假假真真，我们都知道true代表真，false代表假，为程序流程控制起到重要的意义但是在隐式转化的情况下true代表的是1，false代表的是0，下面我们就来看一看</p>
+<h3 id="什么是隐式转化"><a href="#什么是隐式转化" class="headerlink" title="什么是隐式转化"></a>什么是隐式转化</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- ==是比较运算符的一种 其功能就是转化为同类型进行比较 --&gt;</span><br><span class="line"><span class="string">'1'</span> == 1 //=&gt; <span class="literal">true</span></span><br><span class="line">&lt;!-- +可以进行字符串的连接也可用于数字的相加 --&gt;</span><br><span class="line">1 + <span class="string">'1'</span> //=&gt; <span class="string">'11'</span></span><br><span class="line">+ <span class="string">'2'</span> //=&gt; 2</span><br><span class="line"><span class="string">''</span> + 1 //=&gt; <span class="string">'1'</span></span><br><span class="line">&lt;!-- 对象进行比较永远都是<span class="literal">false</span> --&gt;</span><br><span class="line">[] == [] //=&gt; <span class="literal">false</span></span><br><span class="line"></span><br><span class="line">&lt;!-- 数组这样比较实际上比较的是alert弹出的值 --&gt;</span><br><span class="line">[] == <span class="literal">false</span> //=&gt; <span class="literal">true</span></span><br><span class="line">[0] == <span class="literal">false</span> //=&gt; <span class="literal">true</span></span><br><span class="line">[1] == <span class="literal">false</span> //=&gt; <span class="literal">false</span></span><br><span class="line">[0,0] == <span class="string">'0,0'</span> //=&gt; <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+<h3 id="真与假"><a href="#真与假" class="headerlink" title="真与假"></a>真与假</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--隐式转化为 1+1 --&gt;</span><br><span class="line">1 + <span class="literal">true</span> //=&gt; 2 </span><br><span class="line">&lt;!-- 隐式转化为 1+0 --&gt;</span><br><span class="line">1 + <span class="literal">false</span> //=&gt; 1</span><br><span class="line">&lt;!-- 但<span class="literal">true</span>绝对不是1 <span class="literal">false</span>也绝对不是0--&gt;</span><br><span class="line">1 == <span class="literal">true</span> //=&gt; <span class="literal">true</span></span><br><span class="line"><span class="string">'1'</span> == <span class="literal">true</span> //=&gt; <span class="literal">true</span></span><br><span class="line"></span><br><span class="line">0 == <span class="literal">false</span> //=&gt; <span class="literal">true</span></span><br><span class="line"><span class="string">'0'</span> == <span class="literal">false</span> //=&gt; <span class="literal">true</span></span><br><span class="line"></span><br><span class="line">1 === <span class="literal">true</span> //=&gt; <span class="literal">false</span></span><br><span class="line">0 === <span class="literal">false</span> //=&gt; <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+<h3 id="比较运算符中"><a href="#比较运算符中" class="headerlink" title="比较运算符中"></a>比较运算符中</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- -1 &gt; -2 <span class="built_in">return</span> <span class="literal">true</span> <span class="literal">true</span> &gt; 0 1 &gt; 0 <span class="built_in">return</span> <span class="literal">true</span> --&gt;</span><br><span class="line">-1 &gt; -2 &gt; 0 //=&gt; <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+
+            </div>
+
+			
+            <section class="comment">
+	
+		
+			<div id="disqus_thread">
+			    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+			</div>
+			<script type="text/javascript">
+
+			(function() {
+
+				 var uy = document.createElement('script');
+				 uy.src = "//adminparry" + ".disqus.com/embed.js";
+
+				 (document.getElementsByTagName('head')[0]
+				 || document.getElementsByTagName('body')[0]).appendChild(uy);
+
+			})();
+		</script>
+		
+	
+</section>
+
+
+        </div>
+    </div>
+</article>
+
+
+    <footer id="footer">
+    	<br />
+        <small>this blog power by <a href="https://hexo.io/" target="_blank">Hexo</a><br />
+        <small>&copy; 2014 parry</small>
+    </footer>
+
+    
+    <script>
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "https://hm.baidu.com/hm.js?e418ba3055c628bbdc7ef7f841b12ab8";
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();
+	</script>
+
+
+
+
+    
+</body>
+</html>
+

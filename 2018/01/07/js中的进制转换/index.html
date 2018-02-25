@@ -8,7 +8,7 @@
     <meta name="author" content="parry">
     
     <meta name="description" content="二进制 八进制 十进制 十六进制 最为常用支持 2 and 36进制之间的转换
-toString12345&amp;lt;script type=&quot;text/javascript&quot;&amp;gt;	var num = 10086;	console.log(num.toString(2))//100111011001">
+二进制主要用于电子计算器 运算简单 因为二进制的加法表和乘法表是最简单的 这样就会使计算机的运算器小一些易于实现电子元件只有通和断两种不同的状态正好跟二进制的1和0 对应节约设备例如在十进制表示小于1000的正整数 需要">
     
     
 
@@ -98,19 +98,21 @@ toString12345&amp;lt;script type=&quot;text/javascript&quot;&amp;gt;	var num = 1
         <h1>js中的进制转换</h1>
         
         <div class="time-info">
-发表于:<time datetime="2018-01-07T06:27:44.311Z" itemprop="datePublished">2018-01-07</time>，更新于:<time datetime="2018-01-08T03:40:28.762Z" itemprop="dateModified">2018-01-08</time>，By <a href="http://code-helloworld.com" title="parry">parry</a>
+发表于:<time datetime="2018-01-07T06:27:44.311Z" itemprop="datePublished">2018-01-07</time>，更新于:<time datetime="2018-02-21T02:04:50.580Z" itemprop="dateModified">2018-02-21</time>，By <a href="http://code-helloworld.com" title="parry">parry</a>
         </div>
         
         <div class="post-body-inner">
             <div id="toc" class="toc-article well">
                 <strong class="toc-title">大纲</strong>
-                <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#toString-NaN"><span class="toc-number">1.</span> <span class="toc-text">toString</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#parseInt"><span class="toc-number">2.</span> <span class="toc-text">parseInt</span></a></li></ol>
+                <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#toString-NaN"><span class="toc-number">1.</span> <span class="toc-text">toString</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#parseInt"><span class="toc-number">2.</span> <span class="toc-text">parseInt</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Math-pow"><span class="toc-number">3.</span> <span class="toc-text">Math.pow</span></a></li></ol>
             </div>
             <div class="description">
 
             <p>二进制 八进制 十进制 十六进制 最为常用<br>支持 2 and 36进制之间的转换</p>
+<p>二进制主要用于电子计算器 运算简单 因为二进制的加法表和乘法表是最简单的 这样就会使计算机的运算器小一些<br>易于实现电子元件只有通和断两种不同的状态正好跟二进制的1和0 对应<br>节约设备例如在十进制表示小于1000的正整数 需要3个数位 每个数位10个元件 一共3 x 10 = 30<br>2的10次幂是1024 在二进制中表示小于1024 的所有整数需要10个数位 每个数位2个元件 一共2 x 10 = 20 </p>
 <h3 id="toString-NaN"><a href="#toString-NaN" class="headerlink" title="toString"></a>toString</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;script <span class="built_in">type</span>=<span class="string">"text/javascript"</span>&gt;</span><br><span class="line">	var num = 10086;</span><br><span class="line">	console.log(num.toString(2))//10011101100110</span><br><span class="line"> </span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
 <h3 id="parseInt"><a href="#parseInt" class="headerlink" title="parseInt"></a>parseInt</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;script <span class="built_in">type</span>=<span class="string">"text/javascript"</span>&gt;</span><br><span class="line">	var num = 10011101100110;</span><br><span class="line">	// 第二个参数为解析为多少进制 </span><br><span class="line">	console.log(parseInt(num,2))//10086</span><br><span class="line"> </span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="Math-pow"><a href="#Math-pow" class="headerlink" title="Math.pow"></a>Math.pow</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&lt;script <span class="built_in">type</span>=<span class="string">"text/javascript"</span>&gt;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">function</span> convert(wanna,alis)&#123;</span><br><span class="line">		alis = Math.floor(alis);//转换成整数和识别十六进制数</span><br><span class="line">		<span class="keyword">if</span>( 2 &gt;= alis || alis &lt;= 36)&#123;</span><br><span class="line">			var ret = 0;</span><br><span class="line">			var arr = wanna.toString().split(<span class="string">''</span>).reverse().join(<span class="string">''</span>);</span><br><span class="line"></span><br><span class="line">			<span class="keyword">for</span> (var i = 0; i &lt; arr.length; i++) &#123;</span><br><span class="line">				ret += Math.floor(arr[i]) * Math.pow(alis,i);</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="built_in">return</span> ret;</span><br><span class="line">		&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">			<span class="built_in">return</span> NaN;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	var ret = convert(10011101100110,2);</span><br><span class="line">	console.log(ret)//10086</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
             </div>
 
 			

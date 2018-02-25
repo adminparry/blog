@@ -1,0 +1,172 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    
+    
+    <meta name="author" content="parry">
+    
+    <meta name="description" content="request非node自带模块需要到npm镜像中进行安装，该模块的作用实现了http及https的请求，可以利用该功能实现开发日常的需求，例如代理一个服务给自己的服务所用，还可以采集一些数据，文本 图片等，使得拥有资源成为一个简单而又轻松的一件事
+具体api访问地址：https://www.npm">
+    
+    
+
+    
+    <link rel="alternative" href="YOUR_RSS_ADDRESS" title="parry" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/blog/favicon.png">
+    
+    
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>nodejs之request | parry</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="/blog/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/blog/css/style.css">
+
+    <!-- Javascript -->
+    <script src="/blog/js/jquery-2.1.0.min.js"></script>
+    
+    <script src="/blog/bootstrap/js/bootstrap.min.js"></script>
+
+    <script src="/blog/js/common.js"></script>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-inverse" role="banner">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a target="_blank" class="navbar-brand" href="http://code-helloworld.com" title="parry">parry</a>
+
+            
+            </div>
+
+            <div role="navigation" class="collapse navbar-collapse bs-navbar-collapse">
+                
+                <a id="search" href="javascript:" class="navbar-text pull-right">搜索</a>
+                <ul class="nav navbar-nav">
+                    
+                    <li id="nav-index"><a href="/blog">首页</a></li>
+                    
+                    <li id="nav-archives"><a href="/blog/archives">归档</a></li>
+                    
+                    
+                    <li><a href="https://github.com/adminparry" target="_blank">GitHub</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div style="width:100%;height:100%;background:white;display:none;">
+ 
+    </div>
+    <script>
+    var backRoot = "/blog/images/background/";
+    var backArray = [ "1.jpg", "2.jpg", "3.jpg",  ];
+        
+    $(function() {
+        // page-id...
+        var pageId = "2018/02/23/nodejs之request/";
+        pageId = pageId.substr(0, pageId.indexOf("/"));
+        if(pageId === "") pageId = "index";
+        
+        $("#nav-" + pageId).addClass("active");
+        $('#search').click(function(){
+
+        })
+    });
+    </script>
+
+    <article class="post container">
+    <div class="well post-body first-post last-post">
+        <h1>nodejs之request</h1>
+        
+        <div class="time-info">
+发表于:<time datetime="2018-02-23T04:03:37.588Z" itemprop="datePublished">2018-02-23</time>，更新于:<time datetime="2018-02-24T12:16:34.271Z" itemprop="dateModified">2018-02-24</time>，By <a href="http://code-helloworld.com" title="parry">parry</a>
+        </div>
+        
+        <div class="post-body-inner">
+            <div id="toc" class="toc-article well">
+                <strong class="toc-title">大纲</strong>
+                <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#start"><span class="toc-number">1.</span> <span class="toc-text">start</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#一目了然的示例"><span class="toc-number">2.</span> <span class="toc-text">一目了然的示例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数据采集示例"><span class="toc-number">3.</span> <span class="toc-text">数据采集示例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#图片采集示例"><span class="toc-number">4.</span> <span class="toc-text">图片采集示例</span></a></li></ol>
+            </div>
+            <div class="description">
+
+            <p>request非node自带模块需要到npm镜像中进行安装，该模块的作用实现了http及https的请求，可以利用该功能实现开发日常的需求，例如代理一个服务给自己的服务所用，还可以采集一些数据，文本 图片等，使得拥有资源成为一个简单而又轻松的一件事</p>
+<p>具体api访问地址：<a href="https://www.npmjs.com/package/request" target="_blank" rel="noopener">https://www.npmjs.com/package/request</a></p>
+<h3 id="start"><a href="#start" class="headerlink" title="start"></a>start</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ npm install request</span><br><span class="line">$ touch request.js</span><br></pre></td></tr></table></figure>
+<h3 id="一目了然的示例"><a href="#一目了然的示例" class="headerlink" title="一目了然的示例"></a>一目了然的示例</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;script <span class="built_in">type</span>=<span class="string">"text/javascript"</span>&gt;</span><br><span class="line">	var request = require(<span class="string">'request'</span>);</span><br><span class="line">	request(<span class="string">'http://www.google.com'</span>, <span class="keyword">function</span> (error, response, body) &#123;</span><br><span class="line">	  console.log(<span class="string">'error:'</span>, error); // Print the error <span class="keyword">if</span> one occurred</span><br><span class="line">	  console.log(<span class="string">'statusCode:'</span>, response &amp;&amp; response.statusCode); // Print the response status code <span class="keyword">if</span> a response was received</span><br><span class="line">	  console.log(<span class="string">'body:'</span>, body); // Print the HTML <span class="keyword">for</span> the Google homepage.</span><br><span class="line">	&#125;);</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="数据采集示例"><a href="#数据采集示例" class="headerlink" title="数据采集示例"></a>数据采集示例</h3><p>采集一个分页的接口 把数据保存在本地数据库<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line">&lt;script <span class="built_in">type</span>=<span class="string">"text/javascript"</span>&gt;</span><br><span class="line">	var request = require(<span class="string">'request'</span>);</span><br><span class="line">	var mysql = require(<span class="string">'mysql'</span>);</span><br><span class="line">	var connection = mysql.createConnection(&#123;</span><br><span class="line">		host:<span class="string">'127.0.0.1'</span>,</span><br><span class="line">		user:<span class="string">''</span>,</span><br><span class="line">		password:<span class="string">''</span>,</span><br><span class="line">		database:<span class="string">'test'</span></span><br><span class="line">	&#125;)</span><br><span class="line">	var url = <span class="string">'https://www.yinchengmall.com/bus/pc/loan/list/f/business/type/0?pageSize=1000'</span>;</span><br><span class="line"></span><br><span class="line">	request(url,<span class="keyword">function</span>(err,res,body)&#123;</span><br><span class="line">		<span class="keyword">if</span>(err)throw err;</span><br><span class="line"></span><br><span class="line">		connection.connect();</span><br><span class="line">		</span><br><span class="line">		</span><br><span class="line">		</span><br><span class="line">		var json = JSON.parse(res.body).body;</span><br><span class="line">		var total = json.totalCount;</span><br><span class="line">		var pager = <span class="string">'_pager'</span>;</span><br><span class="line"></span><br><span class="line">		var arr = json.result[0];</span><br><span class="line">		var column = Object.keys(arr);</span><br><span class="line"></span><br><span class="line">		<span class="keyword">function</span> generatorColumn (column)&#123;</span><br><span class="line">			<span class="built_in">return</span> column.map((item,index)=&gt; &#123; <span class="built_in">return</span> item += <span class="string">' varchar(255)'</span> &#125;).join(<span class="string">',\r\n'</span>)</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">function</span> generatorRow(row)&#123;</span><br><span class="line">			var ret = [];</span><br><span class="line"></span><br><span class="line">			<span class="keyword">for</span> (var key <span class="keyword">in</span> arr) &#123;</span><br><span class="line">				ret.push(<span class="string">"'"</span> + row[key] + <span class="string">"'"</span>); </span><br><span class="line">			&#125;</span><br><span class="line">			<span class="built_in">return</span> ret.join(<span class="string">',\r\n'</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		var create  = `CREATE TABLE <span class="variable">$&#123;pager&#125;</span>(</span><br><span class="line">							<span class="variable">$&#123;generatorColumn(column)&#125;</span></span><br><span class="line">						)`;</span><br><span class="line"></span><br><span class="line">		connection.query(<span class="string">'select count(1) from sys.objects where name = ?'</span>,pager,<span class="keyword">function</span>(err)&#123;</span><br><span class="line">			<span class="keyword">if</span>(!err)&#123;</span><br><span class="line">				connection.query(create,err =&gt; &#123; <span class="keyword">if</span>(err)throw err &#125;);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;)</span><br><span class="line">		</span><br><span class="line"></span><br><span class="line">		var i = 0;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">while</span>(i++ &lt; json.result.length - 1)&#123;</span><br><span class="line"></span><br><span class="line">			var INSERT = `INSERT INTO <span class="variable">$&#123;pager&#125;</span> VALUES(<span class="variable">$&#123;generatorRow(json.result[i])&#125;</span>)`;</span><br><span class="line">			connection.query(INSERT,err =&gt; &#123; <span class="keyword">if</span>(err)throw err &#125;);</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">	&#125;)</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure></p>
+<h3 id="图片采集示例"><a href="#图片采集示例" class="headerlink" title="图片采集示例"></a>图片采集示例</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">&lt;script <span class="built_in">type</span>=<span class="string">"text/javascript"</span>&gt;</span><br><span class="line">	</span><br><span class="line">	var fs = require(<span class="string">'fs'</span>);</span><br><span class="line">	var request = require(<span class="string">"request"</span>);</span><br><span class="line"></span><br><span class="line">	var url = <span class="string">'https://image.baidu.com/search/acjson?tn=resultjson_com&amp;ipn=rj&amp;ct=201326592&amp;is=&amp;fp=result&amp;queryWord=%E6%97%A5%E6%9C%AC%E5%A5%B3%E4%BB%86&amp;cl=2&amp;lm=-1&amp;ie=utf-8&amp;oe=utf-8&amp;adpicid=&amp;st=-1&amp;z=&amp;ic=0&amp;word=%E6%97%A5%E6%9C%AC%E5%A5%B3%E4%BB%86&amp;s=&amp;se=&amp;tab=&amp;width=&amp;height=&amp;face=0&amp;istype=2&amp;qc=&amp;nc=1&amp;fr=&amp;pn=60&amp;rn=30&amp;gsm=3c&amp;1519390513008='</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	const dir = <span class="string">'./__images__'</span>;</span><br><span class="line"></span><br><span class="line">	fs.mkdir(dir, 0777, <span class="keyword">function</span>(err)&#123;</span><br><span class="line">	 <span class="keyword">if</span>(err)&#123;</span><br><span class="line">	  console.log(err);</span><br><span class="line">	 &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">	  console.log(<span class="string">"creat done!"</span>);</span><br><span class="line">	  execute();</span><br><span class="line">	 &#125;</span><br><span class="line">	&#125;)</span><br><span class="line"></span><br><span class="line">	<span class="keyword">function</span> <span class="function"><span class="title">execute</span></span>()&#123;</span><br><span class="line">		var download = <span class="keyword">function</span>(url, dir, filename)&#123;</span><br><span class="line">			request.head(url, <span class="keyword">function</span>(err, res, body)&#123;</span><br><span class="line">				request(url).pipe(fs.createWriteStream(dir + <span class="string">"/"</span> + filename));</span><br><span class="line">			&#125;);</span><br><span class="line">		&#125;;</span><br><span class="line"></span><br><span class="line">		request(url,<span class="keyword">function</span>(err,res,body)&#123;</span><br><span class="line">			<span class="keyword">if</span>(err) throw err;</span><br><span class="line">			var body = res.body;</span><br><span class="line">			var data = JSON.parse(body).data;</span><br><span class="line">			var i = 0;</span><br><span class="line"></span><br><span class="line">			<span class="keyword">while</span>( ++i &lt; data.length -1 )&#123;</span><br><span class="line"></span><br><span class="line">				console.log(data[i].middleURL);</span><br><span class="line">				var src = data[i].middleURL;</span><br><span class="line"></span><br><span class="line">				download(src, dir, new Date().getTime().toString(32) + src.substr(-4,4));</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;)</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+            </div>
+
+			
+            <section class="comment">
+	
+		
+			<div id="disqus_thread">
+			    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+			</div>
+			<script type="text/javascript">
+
+			(function() {
+
+				 var uy = document.createElement('script');
+				 uy.src = "//adminparry" + ".disqus.com/embed.js";
+
+				 (document.getElementsByTagName('head')[0]
+				 || document.getElementsByTagName('body')[0]).appendChild(uy);
+
+			})();
+		</script>
+		
+	
+</section>
+
+
+        </div>
+    </div>
+</article>
+
+
+    <footer id="footer">
+    	<br />
+        <small>this blog power by <a href="https://hexo.io/" target="_blank">Hexo</a><br />
+        <small>&copy; 2014 parry</small>
+    </footer>
+
+    
+    <script>
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "https://hm.baidu.com/hm.js?e418ba3055c628bbdc7ef7f841b12ab8";
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();
+	</script>
+
+
+
+
+    
+</body>
+</html>
+

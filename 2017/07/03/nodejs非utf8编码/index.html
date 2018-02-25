@@ -1,0 +1,169 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    
+    
+    <meta name="author" content="parry">
+    
+    <meta name="description" content="Unicode是国际组织制定的可以容纳世界上所有文字和符号的字符编码方案，而你接触过的编码实际上都是基于Unicode的一种实现方式，至于为什么要有别的实现方式只是感觉浪费而已，还有一个有意思的事就是Node.JS不支持的字符编码，如GBK，BIG5
+当nodejs遇见gbk123456789101">
+    
+    
+
+    
+    <link rel="alternative" href="YOUR_RSS_ADDRESS" title="parry" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/blog/favicon.png">
+    
+    
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>nodejs非utf8编码 | parry</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="/blog/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/blog/css/style.css">
+
+    <!-- Javascript -->
+    <script src="/blog/js/jquery-2.1.0.min.js"></script>
+    
+    <script src="/blog/bootstrap/js/bootstrap.min.js"></script>
+
+    <script src="/blog/js/common.js"></script>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-inverse" role="banner">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a target="_blank" class="navbar-brand" href="http://code-helloworld.com" title="parry">parry</a>
+
+            
+            </div>
+
+            <div role="navigation" class="collapse navbar-collapse bs-navbar-collapse">
+                
+                <a id="search" href="javascript:" class="navbar-text pull-right">搜索</a>
+                <ul class="nav navbar-nav">
+                    
+                    <li id="nav-index"><a href="/blog">首页</a></li>
+                    
+                    <li id="nav-archives"><a href="/blog/archives">归档</a></li>
+                    
+                    
+                    <li><a href="https://github.com/adminparry" target="_blank">GitHub</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div style="width:100%;height:100%;background:white;display:none;">
+ 
+    </div>
+    <script>
+    var backRoot = "/blog/images/background/";
+    var backArray = [ "1.jpg", "2.jpg", "3.jpg",  ];
+        
+    $(function() {
+        // page-id...
+        var pageId = "2017/07/03/nodejs非utf8编码/";
+        pageId = pageId.substr(0, pageId.indexOf("/"));
+        if(pageId === "") pageId = "index";
+        
+        $("#nav-" + pageId).addClass("active");
+        $('#search').click(function(){
+
+        })
+    });
+    </script>
+
+    <article class="post container">
+    <div class="well post-body first-post last-post">
+        <h1>nodejs非utf8编码</h1>
+        
+        <div class="time-info">
+发表于:<time datetime="2017-07-03T08:38:08.703Z" itemprop="datePublished">2017-07-03</time>，更新于:<time datetime="2018-02-24T17:15:30.667Z" itemprop="dateModified">2018-02-25</time>，By <a href="http://code-helloworld.com" title="parry">parry</a>
+        </div>
+        
+        <div class="post-body-inner">
+            <div id="toc" class="toc-article well">
+                <strong class="toc-title">大纲</strong>
+                <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#当nodejs遇见gbk"><span class="toc-number">1.</span> <span class="toc-text">当nodejs遇见gbk</span></a></li></ol>
+            </div>
+            <div class="description">
+
+            <p>Unicode是国际组织制定的可以容纳世界上所有文字和符号的字符编码方案，而你接触过的编码实际上都是基于Unicode的一种实现方式，至于为什么要有别的实现方式只是感觉浪费而已，还有一个有意思的事就是Node.JS不支持的字符编码，如GBK，BIG5</p>
+<h3 id="当nodejs遇见gbk"><a href="#当nodejs遇见gbk" class="headerlink" title="当nodejs遇见gbk"></a>当nodejs遇见gbk</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">var http = require(<span class="string">"http"</span>);</span><br><span class="line">var iconv = require(<span class="string">"iconv-lite"</span>);</span><br><span class="line">var url = <span class="string">"http://hq.sinajs.cn/etag.php?_=1480057172274list=sh600153"</span>;</span><br><span class="line"></span><br><span class="line">http.request(url, <span class="keyword">function</span>(res)&#123;</span><br><span class="line">	    res.on(<span class="string">'data'</span>,<span class="keyword">function</span>(data)&#123;</span><br><span class="line">	        data = iconv.decode(data, <span class="string">'GBK'</span>);</span><br><span class="line">	        console.log(data)</span><br><span class="line">	        </span><br><span class="line">	    &#125;);</span><br><span class="line">	  </span><br><span class="line">	&#125;).end();</span><br></pre></td></tr></table></figure>
+<p>当nodejs遇见gbk无非就是个乱码而已，当然生活是艰难的，但还是要生活的，<br>一个包包iconv-lite来处理这个乱码，话说包治百病，如果爱请深爱，有兴趣的话打开包看一下，像这种转化应该没有什么算法规律可言的，最暴力的方法就是像密码表一样做映。<br>人家写的专业<a href="http://nodejs.lofter.com/post/3c14e_48aee" target="_blank" rel="noopener">http://nodejs.lofter.com/post/3c14e_48aee</a></p>
+
+            </div>
+
+			
+            <section class="comment">
+	
+		
+			<div id="disqus_thread">
+			    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+			</div>
+			<script type="text/javascript">
+
+			(function() {
+
+				 var uy = document.createElement('script');
+				 uy.src = "//adminparry" + ".disqus.com/embed.js";
+
+				 (document.getElementsByTagName('head')[0]
+				 || document.getElementsByTagName('body')[0]).appendChild(uy);
+
+			})();
+		</script>
+		
+	
+</section>
+
+
+        </div>
+    </div>
+</article>
+
+
+    <footer id="footer">
+    	<br />
+        <small>this blog power by <a href="https://hexo.io/" target="_blank">Hexo</a><br />
+        <small>&copy; 2014 parry</small>
+    </footer>
+
+    
+    <script>
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "https://hm.baidu.com/hm.js?e418ba3055c628bbdc7ef7f841b12ab8";
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();
+	</script>
+
+
+
+
+    
+</body>
+</html>
+

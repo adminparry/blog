@@ -1,0 +1,172 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    
+    
+    <meta name="author" content="parry">
+    
+    <meta name="description" content="http模块作为node的内置模块，可以为我们快速创建http服务
+start1$ touch server.js
+一目了然的示例1234567891011121314151617181920212223242526272829303132333435363738394041424344454647">
+    
+    
+
+    
+    <link rel="alternative" href="YOUR_RSS_ADDRESS" title="parry" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/blog/favicon.png">
+    
+    
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>nodejs之http | parry</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="/blog/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/blog/css/style.css">
+
+    <!-- Javascript -->
+    <script src="/blog/js/jquery-2.1.0.min.js"></script>
+    
+    <script src="/blog/bootstrap/js/bootstrap.min.js"></script>
+
+    <script src="/blog/js/common.js"></script>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-inverse" role="banner">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a target="_blank" class="navbar-brand" href="http://code-helloworld.com" title="parry">parry</a>
+
+            
+            </div>
+
+            <div role="navigation" class="collapse navbar-collapse bs-navbar-collapse">
+                
+                <a id="search" href="javascript:" class="navbar-text pull-right">搜索</a>
+                <ul class="nav navbar-nav">
+                    
+                    <li id="nav-index"><a href="/blog">首页</a></li>
+                    
+                    <li id="nav-archives"><a href="/blog/archives">归档</a></li>
+                    
+                    
+                    <li><a href="https://github.com/adminparry" target="_blank">GitHub</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div style="width:100%;height:100%;background:white;display:none;">
+ 
+    </div>
+    <script>
+    var backRoot = "/blog/images/background/";
+    var backArray = [ "1.jpg", "2.jpg", "3.jpg",  ];
+        
+    $(function() {
+        // page-id...
+        var pageId = "2018/02/24/nodejs之http/";
+        pageId = pageId.substr(0, pageId.indexOf("/"));
+        if(pageId === "") pageId = "index";
+        
+        $("#nav-" + pageId).addClass("active");
+        $('#search').click(function(){
+
+        })
+    });
+    </script>
+
+    <article class="post container">
+    <div class="well post-body first-post last-post">
+        <h1>nodejs之http</h1>
+        
+        <div class="time-info">
+发表于:<time datetime="2018-02-24T07:15:58.971Z" itemprop="datePublished">2018-02-24</time>，更新于:<time datetime="2018-02-24T15:49:55.927Z" itemprop="dateModified">2018-02-24</time>，By <a href="http://code-helloworld.com" title="parry">parry</a>
+        </div>
+        
+        <div class="post-body-inner">
+            <div id="toc" class="toc-article well">
+                <strong class="toc-title">大纲</strong>
+                <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#start"><span class="toc-number">1.</span> <span class="toc-text">start</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#一目了然的示例"><span class="toc-number">2.</span> <span class="toc-text">一目了然的示例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#sql-js"><span class="toc-number">3.</span> <span class="toc-text">sql.js</span></a></li></ol>
+            </div>
+            <div class="description">
+
+            <p>http模块作为node的内置模块，可以为我们快速创建http服务</p>
+<h3 id="start"><a href="#start" class="headerlink" title="start"></a>start</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ touch server.js</span><br></pre></td></tr></table></figure>
+<h3 id="一目了然的示例"><a href="#一目了然的示例" class="headerlink" title="一目了然的示例"></a>一目了然的示例</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br></pre></td><td class="code"><pre><span class="line">&lt;script <span class="built_in">type</span>=<span class="string">"text/javascript"</span>&gt;</span><br><span class="line">	var http = require(<span class="string">'http'</span>);</span><br><span class="line">	var url=require(<span class="string">'url'</span>);</span><br><span class="line">	var qs=require(<span class="string">'querystring'</span>);</span><br><span class="line"></span><br><span class="line">	var sql = require(<span class="string">'./sql'</span>);</span><br><span class="line">	//查询总条数</span><br><span class="line">	<span class="keyword">function</span> count(table_name)&#123;</span><br><span class="line">		<span class="built_in">let</span> sqlStr = `SELECT COUNT(*) AS ? FROM <span class="variable">$&#123;table_name&#125;</span>`;</span><br><span class="line">		<span class="built_in">return</span> new Promise((resolve,reject)=&gt;&#123;</span><br><span class="line">			sql.query(sqlStr,[<span class="string">'count'</span>],(err,result)=&gt;&#123;</span><br><span class="line">				</span><br><span class="line">				<span class="keyword">if</span>(err)&#123;</span><br><span class="line">					reject(err);</span><br><span class="line">					throw err;</span><br><span class="line">				&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">					</span><br><span class="line">					resolve(result);</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;)</span><br><span class="line">		&#125;)</span><br><span class="line">	&#125;</span><br><span class="line">	//<span class="built_in">limit</span>进行分页</span><br><span class="line">	<span class="keyword">function</span> <span class="built_in">limit</span>(table_name,pn,ps)&#123;</span><br><span class="line"></span><br><span class="line">		<span class="built_in">let</span> sqlStr = `SELECT * FROM <span class="variable">$&#123;table_name&#125;</span> LIMIT ?,?`;</span><br><span class="line">		<span class="built_in">return</span> new Promise(<span class="keyword">function</span>(resolve,reject)&#123;</span><br><span class="line">			</span><br><span class="line">			sql.query(sqlStr,[+pn,+ps],(err,result)=&gt;&#123;</span><br><span class="line">				<span class="keyword">if</span>(err)&#123;</span><br><span class="line">					reject(err);</span><br><span class="line">					throw err;</span><br><span class="line">				&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">					resolve(result);</span><br><span class="line">				&#125;</span><br><span class="line">				</span><br><span class="line">			&#125;)</span><br><span class="line">		</span><br><span class="line">		&#125;)</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">function</span> Application(port)&#123;</span><br><span class="line">		var self = this;</span><br><span class="line">		this.UrlSet = [];</span><br><span class="line"></span><br><span class="line">		this.http = http.createServer((req,res)=&gt;&#123;</span><br><span class="line">			<span class="keyword">if</span>(req.url == <span class="string">'/favicon.ico'</span>)&#123;</span><br><span class="line">				res.end(<span class="string">'favicon'</span>);</span><br><span class="line">				<span class="built_in">return</span>;</span><br><span class="line">			&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">				var routerStr = url.parse(req.url,<span class="literal">true</span>).pathname;</span><br><span class="line">				</span><br><span class="line">				var i = -1;</span><br><span class="line">				</span><br><span class="line">				<span class="keyword">while</span>(i++ &lt; self.UrlSet.length - 1 )&#123;</span><br><span class="line">					</span><br><span class="line">				</span><br><span class="line">					<span class="keyword">if</span>(self.UrlSet[i].url == routerStr)&#123;</span><br><span class="line"></span><br><span class="line">						self.UrlSet[i].fn.call(self,req,res);</span><br><span class="line">					&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">						res.end(<span class="string">'404'</span>);</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line"></span><br><span class="line">		&#125;).listen(port)</span><br><span class="line">	&#125; </span><br><span class="line">	Application.prototype.get = <span class="keyword">function</span> get(url,callback)&#123;</span><br><span class="line">		this.UrlSet.push(&#123;url:url,fn:callback&#125;);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	var app = new Application(8888);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">		</span><br><span class="line">	app.get(<span class="string">'/pager'</span>,<span class="keyword">function</span>(req,res)&#123;</span><br><span class="line"></span><br><span class="line">		var arg = url.parse(req.url).query;</span><br><span class="line">	 	var obj = qs.parse(arg);</span><br><span class="line"></span><br><span class="line">	 	const &#123;pageNum,pageSize&#125; = obj;</span><br><span class="line">	 	//表名称</span><br><span class="line">	 	<span class="built_in">let</span> table_name = <span class="string">'_pager'</span>;</span><br><span class="line"></span><br><span class="line">	 	pageNum = isNaN(pageNum) ? 0 : pageNum;</span><br><span class="line">	 	pageSize = isNaN(pageSize) ? 0 : pageSize;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	 	Promise.all([count(table_name),<span class="built_in">limit</span>(table_name,pageNum,pageSize)]).<span class="keyword">then</span>((arg)=&gt;&#123;</span><br><span class="line">	 		var result = Object.create(null);</span><br><span class="line">	 		result.count = arg[0][0].count;</span><br><span class="line">	 		result.data = arg[1];</span><br><span class="line"></span><br><span class="line">	 		res.end(JSON.stringify(result));</span><br><span class="line"></span><br><span class="line">	 	&#125;).catch((err)=&gt;&#123;</span><br><span class="line">	 		res.end(err);</span><br><span class="line">	 	&#125;)</span><br><span class="line">	&#125;)</span><br><span class="line"></span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="sql-js"><a href="#sql-js" class="headerlink" title="sql.js"></a>sql.js</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install mysql</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;script <span class="built_in">type</span>=<span class="string">"text/javascript"</span>&gt;</span><br><span class="line">	var mysql = require(<span class="string">'mysql'</span>);</span><br><span class="line">	var connection = mysql.createConnection(&#123;</span><br><span class="line">		host:<span class="string">'127.0.0.1'</span>,</span><br><span class="line">		user:<span class="string">''</span>,</span><br><span class="line">		password:<span class="string">''</span>,</span><br><span class="line">		database:<span class="string">'test'</span></span><br><span class="line">	&#125;)</span><br><span class="line"></span><br><span class="line">	connection.connect();</span><br><span class="line"></span><br><span class="line">	module.exports = connection;</span><br><span class="line"></span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+            </div>
+
+			
+            <section class="comment">
+	
+		
+			<div id="disqus_thread">
+			    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+			</div>
+			<script type="text/javascript">
+
+			(function() {
+
+				 var uy = document.createElement('script');
+				 uy.src = "//adminparry" + ".disqus.com/embed.js";
+
+				 (document.getElementsByTagName('head')[0]
+				 || document.getElementsByTagName('body')[0]).appendChild(uy);
+
+			})();
+		</script>
+		
+	
+</section>
+
+
+        </div>
+    </div>
+</article>
+
+
+    <footer id="footer">
+    	<br />
+        <small>this blog power by <a href="https://hexo.io/" target="_blank">Hexo</a><br />
+        <small>&copy; 2014 parry</small>
+    </footer>
+
+    
+    <script>
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "https://hm.baidu.com/hm.js?e418ba3055c628bbdc7ef7f841b12ab8";
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();
+	</script>
+
+
+
+
+    
+</body>
+</html>
+

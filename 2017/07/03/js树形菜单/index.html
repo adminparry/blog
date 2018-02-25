@@ -1,0 +1,172 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    
+    
+    <meta name="author" content="parry">
+    
+    <meta name="description" content="树形菜单是开发人员经常遇到的设计，包括sql表的设计，以及前端ui设计
+快速开始创建一个html文件1$ touch index.html
+box作为树形菜单的容器123456789101112&amp;lt;!DOCTYPE html&amp;gt;&amp;lt;html lang=&quot;en&quot;&amp;gt;&amp;lt;head&amp;g">
+    
+    
+
+    
+    <link rel="alternative" href="YOUR_RSS_ADDRESS" title="parry" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/blog/favicon.png">
+    
+    
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>js通用树形菜单 | parry</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="/blog/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/blog/css/style.css">
+
+    <!-- Javascript -->
+    <script src="/blog/js/jquery-2.1.0.min.js"></script>
+    
+    <script src="/blog/bootstrap/js/bootstrap.min.js"></script>
+
+    <script src="/blog/js/common.js"></script>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-inverse" role="banner">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a target="_blank" class="navbar-brand" href="http://code-helloworld.com" title="parry">parry</a>
+
+            
+            </div>
+
+            <div role="navigation" class="collapse navbar-collapse bs-navbar-collapse">
+                
+                <a id="search" href="javascript:" class="navbar-text pull-right">搜索</a>
+                <ul class="nav navbar-nav">
+                    
+                    <li id="nav-index"><a href="/blog">首页</a></li>
+                    
+                    <li id="nav-archives"><a href="/blog/archives">归档</a></li>
+                    
+                    
+                    <li><a href="https://github.com/adminparry" target="_blank">GitHub</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div style="width:100%;height:100%;background:white;display:none;">
+ 
+    </div>
+    <script>
+    var backRoot = "/blog/images/background/";
+    var backArray = [ "1.jpg", "2.jpg", "3.jpg",  ];
+        
+    $(function() {
+        // page-id...
+        var pageId = "2017/07/03/js树形菜单/";
+        pageId = pageId.substr(0, pageId.indexOf("/"));
+        if(pageId === "") pageId = "index";
+        
+        $("#nav-" + pageId).addClass("active");
+        $('#search').click(function(){
+
+        })
+    });
+    </script>
+
+    <article class="post container">
+    <div class="well post-body first-post last-post">
+        <h1>js通用树形菜单</h1>
+        
+        <div class="time-info">
+发表于:<time datetime="2017-07-03T08:38:08.600Z" itemprop="datePublished">2017-07-03</time>，更新于:<time datetime="2017-11-13T14:06:06.642Z" itemprop="dateModified">2017-11-13</time>，By <a href="http://code-helloworld.com" title="parry">parry</a>
+        </div>
+        
+        <div class="post-body-inner">
+            <div id="toc" class="toc-article well">
+                <strong class="toc-title">大纲</strong>
+                <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#快速开始"><span class="toc-number">1.</span> <span class="toc-text">快速开始</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#创建一个html文件"><span class="toc-number">1.1.</span> <span class="toc-text">创建一个html文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#box作为树形菜单的容器"><span class="toc-number">1.2.</span> <span class="toc-text">box作为树形菜单的容器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#编写js文件"><span class="toc-number">1.3.</span> <span class="toc-text">编写js文件</span></a></li></ol></li></ol>
+            </div>
+            <div class="description">
+
+            <p>树形菜单是开发人员经常遇到的设计，包括sql表的设计，以及前端ui设计</p>
+<h2 id="快速开始"><a href="#快速开始" class="headerlink" title="快速开始"></a>快速开始</h2><h3 id="创建一个html文件"><a href="#创建一个html文件" class="headerlink" title="创建一个html文件"></a>创建一个html文件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ touch index.html</span><br></pre></td></tr></table></figure>
+<h3 id="box作为树形菜单的容器"><a href="#box作为树形菜单的容器" class="headerlink" title="box作为树形菜单的容器"></a>box作为树形菜单的容器</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=<span class="string">"en"</span>&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">	&lt;meta charset=<span class="string">"UTF-8"</span>&gt;</span><br><span class="line">	&lt;title&gt;tree&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">	&lt;button id=<span class="string">"open1"</span>&gt;全部展开&lt;/button&gt;&lt;button id=<span class="string">"close1"</span>&gt;全部收起&lt;/button&gt;</span><br><span class="line">	&lt;div id=<span class="string">"box"</span>&gt;&lt;/div&gt;</span><br><span class="line">	</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<p>这里的box作为我们树形菜单的容器</p>
+<h3 id="编写js文件"><a href="#编写js文件" class="headerlink" title="编写js文件"></a>编写js文件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br></pre></td><td class="code"><pre><span class="line">&lt;script <span class="built_in">type</span>=<span class="string">"text/javascript"</span>&gt;</span><br><span class="line">	</span><br><span class="line"></span><br><span class="line">//通常意义这样的数据结构提供给我们作为树形菜单的结构</span><br><span class="line">var arr = [</span><br><span class="line">	&#123;name:<span class="string">'技术部'</span>,</span><br><span class="line">	child:[</span><br><span class="line">	&#123;name:<span class="string">'前端'</span>,child:[]&#125;,</span><br><span class="line">	&#123;name:<span class="string">'后台'</span>,child:[]&#125;</span><br><span class="line">	]&#125;,</span><br><span class="line">	&#123;name:<span class="string">'产品部'</span>,child:[]&#125;,</span><br><span class="line">	&#123;name:<span class="string">'行政部'</span>,child:[</span><br><span class="line">	&#123;name:<span class="string">'执行'</span>,child:[&#123;name:<span class="string">'前台'</span>,child:[]&#125;]&#125;</span><br><span class="line">	]&#125;</span><br><span class="line">]</span><br><span class="line">	//全部展开</span><br><span class="line">	window.open1.onclick = <span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">		<span class="keyword">for</span> (var i = 0; i &lt; window.box.children.length; i++) &#123;</span><br><span class="line">			var ul =  window.box.children[i];</span><br><span class="line">			<span class="keyword">for</span> (var j = 1; j &lt; ul.getElementsByTagName(<span class="string">'li'</span>).length; j++) &#123;</span><br><span class="line">		</span><br><span class="line">				ul.getElementsByTagName(<span class="string">'li'</span>)[0].setAttribute(<span class="string">'isShow'</span>,<span class="string">'1'</span>)</span><br><span class="line">				ul.getElementsByTagName(<span class="string">'li'</span>)[j].style.display = <span class="string">'block'</span>;</span><br><span class="line">				ul.getElementsByTagName(<span class="string">'li'</span>)[j].setAttribute(<span class="string">'isShow'</span>,<span class="string">'1'</span>)</span><br><span class="line">			&#125;</span><br><span class="line">			</span><br><span class="line">			</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	//全部收起</span><br><span class="line">	window.close1.onclick = <span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">for</span> (var i = 0; i &lt; window.box.children.length; i++) &#123;</span><br><span class="line">			var ul =  window.box.children[i];</span><br><span class="line">			<span class="keyword">for</span> (var j = 1; j &lt; ul.getElementsByTagName(<span class="string">'li'</span>).length; j++) &#123;</span><br><span class="line">				</span><br><span class="line">				ul.getElementsByTagName(<span class="string">'li'</span>)[0].setAttribute(<span class="string">'isShow'</span>,<span class="string">'0'</span>)</span><br><span class="line">				ul.getElementsByTagName(<span class="string">'li'</span>)[j].style.display = <span class="string">'none'</span>;</span><br><span class="line">				ul.getElementsByTagName(<span class="string">'li'</span>)[j].setAttribute(<span class="string">'isShow'</span>,<span class="string">'0'</span>)</span><br><span class="line">			&#125;</span><br><span class="line">			</span><br><span class="line">			</span><br><span class="line">		&#125;</span><br><span class="line">	</span><br><span class="line">	&#125;</span><br><span class="line">	//初始化我们的tree方法</span><br><span class="line">	tree(document.getElementById(<span class="string">'box'</span>),arr);</span><br><span class="line">	//事件委托添加点击事件 当然在这里也可以添加动画特效</span><br><span class="line">	document.getElementById(<span class="string">'box'</span>).onclick = <span class="keyword">function</span>(ev)&#123;</span><br><span class="line">		var ev = ev || event;</span><br><span class="line">		<span class="keyword">if</span>(ev.target.className == <span class="string">'click'</span> &amp;&amp; ev.target.nextElementSibling)&#123;</span><br><span class="line">			<span class="keyword">if</span>(ev.target.getAttribute(<span class="string">'isShow'</span>) == <span class="string">'0'</span>)&#123;</span><br><span class="line"></span><br><span class="line">				ev.target.setAttribute(<span class="string">'isShow'</span>,<span class="string">'1'</span>)</span><br><span class="line">				ev.target.nextElementSibling.style.display = <span class="string">'block'</span>;</span><br><span class="line">				var child = ev.target.nextElementSibling.getElementsByTagName(<span class="string">'li'</span>);</span><br><span class="line">				<span class="keyword">for</span> (var i = 0; i &lt; child.length; i++) &#123;</span><br><span class="line">					child[i].style.display = <span class="string">'block'</span>;</span><br><span class="line">					child[i].setAttribute(<span class="string">'isShow'</span>,<span class="string">'1'</span>);</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;<span class="keyword">else</span>&#123;</span><br><span class="line"></span><br><span class="line">				ev.target.setAttribute(<span class="string">'isShow'</span>,<span class="string">'0'</span>)</span><br><span class="line">				ev.target.nextElementSibling.style.display = <span class="string">'none'</span>;</span><br><span class="line">				var child = ev.target.nextElementSibling.getElementsByTagName(<span class="string">'li'</span>);</span><br><span class="line">				<span class="keyword">for</span> (var i = 0; i &lt; child.length; i++) &#123;</span><br><span class="line">					child[i].style.display = <span class="string">'none'</span>;</span><br><span class="line">					child[i].setAttribute(<span class="string">'isShow'</span>,<span class="string">'0'</span>);</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	//采用递归的方式来创建html结构 因为数据的维度不是固定的</span><br><span class="line">	<span class="keyword">function</span> tree(ele,data)&#123;</span><br><span class="line">		<span class="keyword">if</span>(data.length)&#123;</span><br><span class="line">			<span class="keyword">for</span> (var i = 0; i &lt; data.length; i++) &#123;</span><br><span class="line">				//创建每个数据单例</span><br><span class="line">				var ul = document.createElement(<span class="string">'ul'</span>);</span><br><span class="line">				var li = document.createElement(<span class="string">'li'</span>);</span><br><span class="line"></span><br><span class="line">				li.className = <span class="string">'click'</span>;</span><br><span class="line">				li.innerHTML = data[i].name;</span><br><span class="line"></span><br><span class="line">				ul.appendChild(li);</span><br><span class="line">				ele.appendChild(ul);</span><br><span class="line">				</span><br><span class="line">				<span class="keyword">if</span>(data[i].child.length)&#123;</span><br><span class="line">					//为了方便控制子集单例放到一个容器里</span><br><span class="line">					var nextLi = document.createElement(<span class="string">'li'</span>);</span><br><span class="line">					ul.appendChild(nextLi);</span><br><span class="line">					tree(nextLi,data[i].child)</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+            </div>
+
+			
+            <section class="comment">
+	
+		
+			<div id="disqus_thread">
+			    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+			</div>
+			<script type="text/javascript">
+
+			(function() {
+
+				 var uy = document.createElement('script');
+				 uy.src = "//adminparry" + ".disqus.com/embed.js";
+
+				 (document.getElementsByTagName('head')[0]
+				 || document.getElementsByTagName('body')[0]).appendChild(uy);
+
+			})();
+		</script>
+		
+	
+</section>
+
+
+        </div>
+    </div>
+</article>
+
+
+    <footer id="footer">
+    	<br />
+        <small>this blog power by <a href="https://hexo.io/" target="_blank">Hexo</a><br />
+        <small>&copy; 2014 parry</small>
+    </footer>
+
+    
+    <script>
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "https://hm.baidu.com/hm.js?e418ba3055c628bbdc7ef7f841b12ab8";
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();
+	</script>
+
+
+
+
+    
+</body>
+</html>
+
